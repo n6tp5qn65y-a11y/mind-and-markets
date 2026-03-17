@@ -1,279 +1,226 @@
-const lessons = [
-  {
-    id: 1,
-    category: "Marchés financiers",
-    title: "C’est quoi une action ?",
-    duration: "3 min",
-    level: "Débutant",
-    icon: "↗",
-    gradient: "gradient-green",
-    chart: "bars-up",
-    summary:
-      "Une action représente une petite part d’une entreprise. Son prix varie selon les attentes des investisseurs, les résultats publiés et l’état du marché.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Quand une entreprise est cotée en bourse, elle divise son capital en actions. Acheter une action, ce n’est pas juste “jouer en bourse” : c’est devenir propriétaire d’une très petite partie de l’entreprise. Son prix bouge en fonction de ce que le marché pense de son avenir. Si les investisseurs anticipent plus de croissance, le prix peut monter. Si les résultats déçoivent ou que le contexte économique se détériore, il peut baisser.",
-    points: [
-      "Acheter une action, c’est acheter une part du capital d’une entreprise.",
-      "Le prix dépend autant des résultats que des anticipations.",
-      "L’investisseur peut espérer une hausse du cours ou un dividende."
-    ]
-  },
-  {
-    id: 2,
-    category: "Économie",
-    title: "Pourquoi les prix augmentent ?",
-    duration: "4 min",
-    level: "Essentiel",
-    icon: "🔥",
-    gradient: "gradient-orange",
-    chart: "inflation",
-    summary:
-      "L’inflation correspond à une hausse générale des prix. Quand elle augmente trop vite, ton argent perd en pouvoir d’achat.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "L’inflation ne veut pas dire qu’un seul produit devient plus cher, mais qu’en moyenne les prix augmentent dans l’économie. Cela peut venir d’une demande forte, d’un coût de production plus élevé ou encore d’un choc sur l’énergie. Si les salaires n’augmentent pas au même rythme, le niveau de vie peut se dégrader. C’est pour cela que l’inflation est suivie de très près par les banques centrales et les gouvernements.",
-    points: [
-      "L’inflation est une hausse générale et durable des prix.",
-      "Quand les prix montent, ton argent permet d’acheter moins.",
-      "Les banques centrales utilisent les taux d’intérêt pour la ralentir."
-    ]
-  },
-  {
-    id: 3,
-    category: "Économie",
-    title: "À quoi servent les taux d’intérêt ?",
-    duration: "3 min",
-    level: "Intermédiaire",
-    icon: "🛡",
-    gradient: "gradient-cyan",
-    chart: "rate",
-    summary:
-      "Les taux d’intérêt influencent le coût du crédit et jouent un rôle central dans l’économie.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Quand les taux montent, emprunter devient plus cher pour les ménages, les entreprises et parfois les États. Cela peut ralentir la consommation, l’investissement et, à terme, calmer l’inflation. À l’inverse, des taux plus faibles rendent le crédit plus accessible et peuvent relancer l’activité. Les taux ont aussi un effet sur les marchés financiers, car ils changent la valeur relative des placements.",
-    points: [
-      "Des taux plus élevés rendent le crédit plus cher.",
-      "Ils peuvent ralentir la demande dans l’économie.",
-      "Ils influencent aussi les marchés financiers."
-    ]
-  },
-  {
-    id: 4,
-    category: "Marchés financiers",
-    title: "Pourquoi les marchés bougent ?",
-    duration: "4 min",
-    level: "Clair",
-    icon: "📈",
-    gradient: "gradient-pink",
-    chart: "market",
-    summary:
-      "Les marchés financiers réagissent aux nouvelles, aux taux, aux résultats et à la psychologie collective.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Les prix en bourse ne bougent pas seulement parce qu’un chiffre est bon ou mauvais. Ils bougent surtout selon l’écart entre ce qui était attendu et ce qui arrive réellement. Une très bonne nouvelle déjà anticipée peut donc avoir peu d’effet. Inversement, une petite déception peut faire baisser fortement un titre si le marché espérait beaucoup mieux. La confiance, la peur et la liquidité jouent aussi un rôle majeur.",
-    points: [
-      "Le marché regarde souvent le futur plus que le présent.",
-      "La peur et l’euphorie influencent aussi les prix.",
-      "Une bonne nouvelle déjà anticipée peut avoir peu d’effet."
-    ]
-  },
-  {
-    id: 5,
-    category: "Business",
-    title: "Les bases du marketing",
-    duration: "4 min",
-    level: "Débutant",
-    icon: "💼",
-    gradient: "gradient-violet",
-    chart: "funnel",
-    summary:
-      "Le marketing consiste à comprendre un besoin, créer une offre utile et la rendre désirable pour un public précis.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Le marketing n’est pas simplement de la publicité. C’est une logique de compréhension du client, de définition d’une cible, de création d’une proposition de valeur et de construction d’une offre cohérente. Une bonne stratégie marketing repose sur la clarté : à qui on parle, quel problème on résout, et pourquoi notre solution est intéressante. Une offre forte est une offre qu’on comprend vite.",
-    points: [
-      "On ne vend pas à tout le monde : il faut cibler.",
-      "Une offre claire aide à se différencier.",
-      "La valeur perçue compte énormément."
-    ],
-    quote:
-      "Idée inspirée de Père riche père pauvre : apprendre à distinguer ce qui crée de la valeur de ce qui coûte sans rapporter."
-  },
-  {
-    id: 6,
-    category: "Business",
-    title: "C’est quoi une marque ?",
-    duration: "3 min",
-    level: "Débutant",
-    icon: "✨",
-    gradient: "gradient-rose",
-    chart: "brand",
-    summary:
-      "Une marque n’est pas juste un logo : c’est une promesse, une perception et une position dans l’esprit du client.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "La marque agit comme un raccourci mental. Elle rassure, elle crée de la cohérence et elle influence la préférence. Deux produits proches peuvent être perçus très différemment selon l’univers, les codes visuels, le ton et la réputation de la marque. Une marque forte ne repose pas seulement sur le design, mais aussi sur l’expérience globale qu’elle promet et délivre.",
-    points: [
-      "Une marque influence la confiance.",
-      "Elle peut créer de la préférence.",
-      "Elle aide à justifier un prix plus élevé."
-    ],
-    quote:
-      "Idée inspirée de Père riche père pauvre : ce n’est pas seulement ce que tu gagnes qui compte, mais ce que tu construis durablement."
-  },
-  {
-    id: 7,
-    category: "Business",
-    title: "Actifs vs passifs",
-    duration: "4 min",
-    level: "Essentiel",
-    icon: "🐷",
-    gradient: "gradient-lime",
-    chart: "assets",
-    summary:
-      "Une idée simple mais puissante : certains choix t’apportent de la valeur, d’autres te coûtent durablement.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Réfléchir en termes d’actifs et de passifs permet de mieux lire sa situation financière. Un actif peut générer un revenu, prendre de la valeur ou soutenir un projet rentable. Un passif, au contraire, implique des coûts, des remboursements ou des dépenses sans contrepartie économique durable. Cette grille de lecture aide à prendre de meilleures décisions, même à petite échelle.",
-    points: [
-      "Un actif peut générer un revenu ou prendre de la valeur.",
-      "Un passif peut coûter à entretenir ou à rembourser.",
-      "Le but est d’accumuler davantage d’actifs utiles."
-    ],
-    quote:
-      "Idée inspirée de Père riche père pauvre : développer son éducation financière aide à faire de meilleurs choix."
-  },
-  {
-    id: 8,
-    category: "Business",
-    title: "Le cashflow, pourquoi c’est clé ?",
-    duration: "3 min",
-    level: "Intermédiaire",
-    icon: "💳",
-    gradient: "gradient-indigo",
-    chart: "cashflow",
-    summary:
-      "Le cashflow correspond aux entrées et sorties d’argent. C’est une mesure concrète de la santé d’un projet.",
-    deeperTitle: "À comprendre",
-    deeperText:
-      "Un projet peut sembler rentable sur le papier tout en ayant un mauvais cashflow. C’est un point crucial, car sans liquidités suffisantes, il devient difficile de payer les charges, d’investir ou simplement de tenir dans la durée. Le cashflow oblige à regarder la réalité : quand l’argent entre, quand il sort, et si le rythme est soutenable. C’est une logique indispensable pour tout projet business.",
-    points: [
-      "Le chiffre d’affaires seul ne suffit pas.",
-      "Il faut suivre les entrées et sorties d’argent.",
-      "Un cashflow sain rend un projet plus solide."
-    ],
-    quote:
-      "Idée inspirée de Père riche père pauvre : savoir comment l’argent circule permet de mieux décider."
-  }
-];
-
-const quizzes = [
-  {
-    id: 1,
-    lessonId: 1,
-    question: "Une action correspond à…",
-    options: [
-      "Une part d’entreprise",
-      "Un prêt bancaire",
-      "Une taxe",
-      "Une obligation d’État"
-    ],
-    correctIndex: 0,
-    explanation:
-      "Une action représente une petite part du capital d’une entreprise.",
-    points: 50
-  },
-  {
-    id: 2,
-    lessonId: 2,
-    question: "L’inflation signifie…",
-    options: [
-      "Une baisse générale des prix",
-      "Une hausse générale des prix",
-      "Une hausse des salaires uniquement",
-      "Une stagnation des prix"
-    ],
-    correctIndex: 1,
-    explanation:
-      "L’inflation désigne une hausse générale et durable des prix.",
-    points: 50
-  },
-  {
-    id: 3,
-    lessonId: 7,
-    question: "Dans l’idée actifs vs passifs, un actif…",
-    options: [
-      "Te retire de l’argent",
-      "Peut t’apporter de la valeur",
-      "Est toujours très cher",
-      "N’a rien à voir avec la finance"
-    ],
-    correctIndex: 1,
-    explanation:
-      "Un actif est pensé comme un élément qui peut générer de la valeur ou des revenus.",
-    points: 60
-  },
-  {
-    id: 4,
-    lessonId: 5,
-    question: "Le marketing sert surtout à…",
-    options: [
-      "Créer de la valeur pour un public ciblé",
-      "Faire uniquement de la publicité",
-      "Copier les concurrents",
-      "Changer le logo tous les mois"
-    ],
-    correctIndex: 0,
-    explanation:
-      "Le marketing commence par la compréhension d’un besoin et d’un public.",
-    points: 60
-  },
-  {
-    id: 5,
-    lessonId: 8,
-    question: "Le cashflow, c’est…",
-    options: [
-      "L’image de marque",
-      "Les entrées et sorties d’argent",
-      "Le prix de vente",
-      "Le nombre de clients"
-    ],
-    correctIndex: 1,
-    explanation:
-      "Le cashflow mesure concrètement les flux d’argent qui entrent et sortent.",
-    points: 70
-  }
-];
-
-const quests = [
-  { id: 1, title: "Lire 2 leçons", reward: 40 },
-  { id: 2, title: "Réussir 1 quiz", reward: 60 },
-  { id: 3, title: "Atteindre 200 points", reward: 80 },
-  { id: 4, title: "Finir 1 leçon business", reward: 50 }
-];
-
-const rewards = [
-  { level: 2, title: "Badge Curieux", icon: "⭐" },
-  { level: 3, title: "Badge Analyste Junior", icon: "🎯" },
-  { level: 4, title: "Badge Stratège", icon: "🏅" },
-  { level: 5, title: "Coffre Premium", icon: "🎁" },
-  { level: 6, title: "Couronne Mind & Markets", icon: "👑" }
-];
-
-const STORAGE_KEY = "mind_markets_progress_static_v2";
+const STORAGE_KEY = "mind_markets_ultra_v1";
 
 const defaultProgress = {
+  selectedTrack: null,
   points: 0,
   completedLessons: [],
   solvedQuizzes: [],
   claimedQuests: [],
-  unlockedRewardsShown: []
+  seenLevelRewards: []
 };
 
+const TRACKS = {
+  debutant: {
+    label: "Débutant",
+    emoji: "🌱",
+    description: "Bases ultra claires, notions fondamentales, compréhension rassurante."
+  },
+  intermediaire: {
+    label: "Intermédiaire",
+    emoji: "📈",
+    description: "Approfondissement, logique de marché, macro, construction d’analyse."
+  },
+  professionnel: {
+    label: "Professionnel",
+    emoji: "🧠",
+    description: "Approches avancées, interview-style, notes d’analyse, cas et ressources premium."
+  }
+};
+
+const TOPIC_BANK = {
+  debutant: [
+    { category: "Marchés", emoji: "📈", title: "C’est quoi une action ?", chart: "bars", hook: "Comprendre ce qu’on achète vraiment en bourse." },
+    { category: "Marchés", emoji: "🪙", title: "Bitcoin, c’est quoi ?", chart: "line", hook: "Découvrir l’idée derrière les crypto-actifs." },
+    { category: "Macro", emoji: "🔥", title: "L’inflation simplement", chart: "inflation", hook: "Pourquoi les prix montent et pourquoi ça change tout." },
+    { category: "Macro", emoji: "🏦", title: "Le rôle des banques centrales", chart: "bars", hook: "Pourquoi les taux d’intérêt influencent l’économie." },
+    { category: "Business", emoji: "💼", title: "Les bases du marketing", chart: "funnel", hook: "Comprendre une offre, une cible et une promesse." },
+    { category: "Business", emoji: "✨", title: "C’est quoi une marque ?", chart: "brand", hook: "La perception peut valoir très cher." },
+    { category: "Investissement", emoji: "📊", title: "C’est quoi un ETF ?", chart: "bars", hook: "Investir dans un panier plutôt qu’un seul titre." },
+    { category: "Investissement", emoji: "💳", title: "Comprendre le cashflow", chart: "cashflow", hook: "Ce qui entre, ce qui sort, et pourquoi c’est vital." },
+    { category: "Business", emoji: "🐷", title: "Actifs vs passifs", chart: "assets", hook: "Une logique simple pour raisonner plus juste." },
+    { category: "Marchés", emoji: "⚖️", title: "Offre et demande", chart: "line", hook: "Le mécanisme derrière l’évolution des prix." }
+  ],
+  intermediaire: [
+    { category: "Marchés", emoji: "📉", title: "Pourquoi les marchés corrigent", chart: "line", hook: "Lire une baisse sans paniquer." },
+    { category: "Macro", emoji: "🌍", title: "Macro et sentiment de marché", chart: "line", hook: "Le lien entre économie et prix d’actifs." },
+    { category: "Investissement", emoji: "🧮", title: "Risque / rendement", chart: "bars", hook: "Toute performance a un prix." },
+    { category: "Investissement", emoji: "🛡️", title: "Diversification intelligente", chart: "bars", hook: "Mieux répartir pour moins subir." },
+    { category: "Business", emoji: "🎯", title: "Positionnement de marque", chart: "brand", hook: "Se différencier sans se perdre." },
+    { category: "Business", emoji: "🧠", title: "Psychologie du consommateur", chart: "funnel", hook: "Ce qui influence vraiment une décision." },
+    { category: "Macro", emoji: "📦", title: "Énergie et inflation", chart: "inflation", hook: "Pourquoi certaines hausses de prix contaminent tout." },
+    { category: "Marchés", emoji: "💹", title: "Volatilité et liquidité", chart: "line", hook: "Quand le marché devient nerveux." },
+    { category: "Investissement", emoji: "🪙", title: "Allocation crypto prudente", chart: "bars", hook: "Éviter le all-in irrationnel." },
+    { category: "Business", emoji: "📣", title: "Funnel marketing", chart: "funnel", hook: "Transformer l’attention en conversion." }
+  ],
+  professionnel: [
+    { category: "Marchés", emoji: "🧠", title: "Lecture d’un market brief", chart: "line", hook: "Analyser rapidement une séance." },
+    { category: "Macro", emoji: "🏛️", title: "Taux réels et valorisation", chart: "bars", hook: "Quand la macro pèse sur les multiples." },
+    { category: "Investissement", emoji: "🪙", title: "Interview investisseur : discipline", chart: "line", hook: "Penser process avant performance." },
+    { category: "Business", emoji: "📚", title: "Étude de cas : pricing stratégique", chart: "bars", hook: "Le prix comme levier de perception." },
+    { category: "Business", emoji: "🎙️", title: "Interview : construire une marque premium", chart: "brand", hook: "Clarté, désirabilité, cohérence." },
+    { category: "Marchés", emoji: "💼", title: "Rotation sectorielle", chart: "bars", hook: "Pourquoi certains segments surperforment." },
+    { category: "Macro", emoji: "📰", title: "Article : inflation sous-jacente", chart: "inflation", hook: "Aller au-delà du chiffre headline." },
+    { category: "Investissement", emoji: "📊", title: "Case study : construire un portefeuille", chart: "cashflow", hook: "Objectif, horizon, risque, discipline." },
+    { category: "Business", emoji: "🔍", title: "Analyse concurrentielle avancée", chart: "funnel", hook: "Lire une structure de marché." },
+    { category: "Marchés", emoji: "₿", title: "Cycle crypto et gestion émotionnelle", chart: "line", hook: "La structure bat l’excitation." }
+  ]
+};
+
+function createLessonsForTrack(trackKey, startId) {
+  const bank = TOPIC_BANK[trackKey];
+  const lessons = [];
+
+  for (let i = 0; i < 50; i += 1) {
+    const seed = bank[i % bank.length];
+    const module = i + 1;
+    const format =
+      trackKey === "professionnel"
+        ? ["Article", "Interview", "Analyse", "Case Study", "Brief"][i % 5]
+        : "Leçon";
+
+    lessons.push({
+      id: startId + i,
+      audience: trackKey,
+      category: seed.category,
+      emoji: seed.emoji,
+      title: `${seed.title} • Module ${module}`,
+      format,
+      duration: `${3 + (i % 4)} min`,
+      chart: seed.chart,
+      summary: `${seed.hook} Ce module ${module} est calibré pour un niveau ${TRACKS[trackKey].label.toLowerCase()}.`,
+      deeperText:
+        trackKey === "debutant"
+          ? `Dans ce module, l’objectif est d’aller au fond de la notion sans jargon inutile. On part d’un exemple simple, on clarifie le vocabulaire, puis on montre pourquoi cette idée compte vraiment dans le quotidien d’un investisseur, d’un étudiant ou d’un futur professionnel du business.`
+          : trackKey === "intermediaire"
+          ? `Ce module approfondit la notion en reliant plusieurs dimensions : contexte macro, logique de marché, lecture plus fine des mécanismes et erreurs fréquentes d’interprétation. L’idée est de passer d’une compréhension “théorique” à une grille d’analyse plus concrète.`
+          : `Ce module adopte une approche plus premium : angle d’analyse, réflexion de process, logique de marché, points de friction et lecture plus mature. Le format peut s’apparenter à une note, un brief, une mini interview ou un cas d’étude pour s’inspirer d’une logique plus professionnelle.`,
+      bullets: [
+        `Idée-clé n°1 du module ${module}`,
+        `Point de vigilance n°2 du module ${module}`,
+        `Application concrète n°3 du module ${module}`
+      ],
+      quote:
+        seed.category === "Business"
+          ? "Idée inspirée de Père riche père pauvre : créer de la valeur durable compte plus qu’une impression de richesse."
+          : null
+    });
+  }
+
+  return lessons;
+}
+
+const lessons = [
+  ...createLessonsForTrack("debutant", 1),
+  ...createLessonsForTrack("intermediaire", 1001),
+  ...createLessonsForTrack("professionnel", 2001)
+];
+
+function createQuizForLesson(lesson, quizId) {
+  const baseRight =
+    lesson.category === "Marchés"
+      ? "Une logique liée au prix, au risque ou aux anticipations"
+      : lesson.category === "Macro"
+      ? "Un mécanisme économique qui influence l’ensemble du système"
+      : lesson.category === "Business"
+      ? "Une décision qui crée de la valeur pour une cible précise"
+      : "Une approche structurée de gestion et d’allocation";
+
+  const distractors = [
+    "Une information sans impact réel",
+    "Une réponse purement émotionnelle",
+    "Un détail sans importance stratégique"
+  ];
+
+  const options = [baseRight, ...distractors];
+
+  return {
+    id: quizId,
+    lessonId: lesson.id,
+    audience: lesson.audience,
+    emoji: lesson.emoji,
+    question: `${lesson.title} — quelle formulation correspond le mieux à la logique centrale de cette leçon ?`,
+    options,
+    correctIndex: 0,
+    explanation: `La bonne réponse renvoie à l’idée centrale travaillée dans la leçon « ${lesson.title} ».`,
+    points:
+      lesson.audience === "debutant"
+        ? 35
+        : lesson.audience === "intermediaire"
+        ? 45
+        : 60
+  };
+}
+
+const quizzes = lessons.map((lesson, index) => createQuizForLesson(lesson, index + 1));
+
+const questTemplates = [
+  { title: "Lire 2 leçons", reward: 40, type: "lessonCount", target: 2 },
+  { title: "Lire 5 leçons", reward: 70, type: "lessonCount", target: 5 },
+  { title: "Réussir 1 QCM", reward: 50, type: "quizCount", target: 1 },
+  { title: "Réussir 3 QCM", reward: 90, type: "quizCount", target: 3 },
+  { title: "Atteindre 150 points", reward: 80, type: "points", target: 150 },
+  { title: "Atteindre 300 points", reward: 120, type: "points", target: 300 },
+  { title: "Atteindre le niveau 5", reward: 110, type: "level", target: 5 },
+  { title: "Atteindre le niveau 10", reward: 160, type: "level", target: 10 },
+  { title: "Finir 1 leçon business", reward: 70, type: "categoryLesson", target: "Business" },
+  { title: "Finir 1 leçon marchés", reward: 70, type: "categoryLesson", target: "Marchés" }
+];
+
+const quests = Array.from({ length: 50 }, (_, i) => {
+  const template = questTemplates[i % questTemplates.length];
+  const multiplier = Math.floor(i / questTemplates.length) + 1;
+
+  const target =
+    typeof template.target === "number"
+      ? template.target * multiplier
+      : template.target;
+
+  const unlockLevel =
+    i < 10 ? 1 :
+    i < 20 ? 4 :
+    i < 30 ? 8 :
+    i < 40 ? 14 : 22;
+
+  return {
+    id: i + 1,
+    title:
+      typeof template.target === "number"
+        ? `${template.title} • Palier ${multiplier}`
+        : `${template.title} • Série ${multiplier}`,
+    reward: template.reward + multiplier * 12,
+    type: template.type,
+    target,
+    unlockLevel
+  };
+});
+
+const rewards = Array.from({ length: 50 }, (_, i) => {
+  const level = i + 1;
+  const pool = ["⭐", "🎯", "🏅", "🎁", "👑", "💎", "🚀", "🧠", "📈", "🔥"];
+  const names = [
+    "Explorateur",
+    "Curieux",
+    "Analyste Junior",
+    "Stratège",
+    "Architecte",
+    "Pulse Reader",
+    "Macro Scout",
+    "Investor Mind",
+    "Brand Builder",
+    "Market Master"
+  ];
+
+  return {
+    level,
+    icon: pool[i % pool.length],
+    title: `${names[i % names.length]} • Niv. ${level}`
+  };
+});
+
 let progress = loadProgress();
-let currentFilter = "Tous";
+let lessonAudienceFilter = "all";
+let lessonCategoryFilter = "all";
+let quizAudienceFilter = "recommended";
 
 function loadProgress() {
   try {
@@ -290,43 +237,111 @@ function saveProgress() {
 }
 
 function levelFromPoints(points) {
-  return Math.floor(points / 150) + 1;
+  return Math.min(50, Math.floor(points / 120) + 1);
 }
 
 function nextLevelAt(level) {
-  return level * 150;
+  return level >= 50 ? 6000 : level * 120;
 }
 
-function lessonFilterMatch(lesson) {
-  return currentFilter === "Tous" || lesson.category === currentFilter;
+function getTrackLabel(track) {
+  return TRACKS[track]?.label || "Débutant";
 }
 
-function getQuestStatus() {
-  return {
-    1: progress.completedLessons.length >= 2,
-    2: progress.solvedQuizzes.length >= 1,
-    3: progress.points >= 200,
-    4: lessons
-      .filter((l) => l.category === "Business")
-      .some((l) => progress.completedLessons.includes(l.id))
-  };
+function getTrackEmoji(track) {
+  return TRACKS[track]?.emoji || "🌱";
+}
+
+function getRecommendedLessons() {
+  const activeTrack = progress.selectedTrack || "debutant";
+  return lessons.filter((lesson) => lesson.audience === activeTrack).slice(0, 6);
+}
+
+function getVisibleLessons() {
+  return lessons.filter((lesson) => {
+    const audienceOk =
+      lessonAudienceFilter === "all" ? true : lesson.audience === lessonAudienceFilter;
+    const categoryOk =
+      lessonCategoryFilter === "all" ? true : lesson.category === lessonCategoryFilter;
+    return audienceOk && categoryOk;
+  });
+}
+
+function getVisibleQuizzes() {
+  if (quizAudienceFilter === "recommended") {
+    return quizzes.filter((quiz) => {
+      const lesson = lessons.find((l) => l.id === quiz.lessonId);
+      return lesson?.audience === (progress.selectedTrack || "debutant");
+    }).slice(0, 12);
+  }
+
+  return quizzes.filter((quiz) => quiz.audience === quizAudienceFilter).slice(0, 18);
+}
+
+function getLessonsByCategory(category) {
+  return progress.completedLessons
+    .map((id) => lessons.find((l) => l.id === id))
+    .filter(Boolean)
+    .filter((lesson) => lesson.category === category);
+}
+
+function isQuestUnlocked(quest) {
+  return levelFromPoints(progress.points) >= quest.unlockLevel;
+}
+
+function isQuestCompleted(quest) {
+  switch (quest.type) {
+    case "lessonCount":
+      return progress.completedLessons.length >= quest.target;
+    case "quizCount":
+      return progress.solvedQuizzes.length >= quest.target;
+    case "points":
+      return progress.points >= quest.target;
+    case "level":
+      return levelFromPoints(progress.points) >= quest.target;
+    case "categoryLesson":
+      return getLessonsByCategory(quest.target).length >= 1;
+    default:
+      return false;
+  }
 }
 
 function updateTopStats() {
   const level = levelFromPoints(progress.points);
   const nextTarget = nextLevelAt(level);
-  const fill = Math.min((progress.points / nextTarget) * 100, 100);
+  const currentLevelFloor = (level - 1) * 120;
+  const levelProgressValue = progress.points - currentLevelFloor;
+  const levelSpan = nextTarget - currentLevelFloor || 120;
+  const fill = Math.min((levelProgressValue / levelSpan) * 100, 100);
 
+  const trackLabel = getTrackLabel(progress.selectedTrack || "debutant");
+
+  document.getElementById("trackStat").textContent = trackLabel;
   document.getElementById("levelStat").textContent = level;
   document.getElementById("pointsStat").textContent = progress.points;
-  document.getElementById("lessonsStat").textContent = progress.completedLessons.length;
-  document.getElementById("quizStat").textContent = progress.solvedQuizzes.length;
+  document.getElementById("questsStat").textContent = progress.claimedQuests.length;
+
+  const lessonCountEls = document.querySelectorAll("#lessonsStat");
+  lessonCountEls.forEach((el) => { el.textContent = progress.completedLessons.length; });
+
+  const quizCountEls = document.querySelectorAll("#quizStat");
+  quizCountEls.forEach((el) => { el.textContent = progress.solvedQuizzes.length; });
+
   document.getElementById("progressText").textContent = `${progress.points} / ${nextTarget}`;
   document.getElementById("progressBarFill").style.width = `${fill}%`;
+
+  document.getElementById("heroTrackBadge").textContent = `${getTrackEmoji(progress.selectedTrack || "debutant")} ${trackLabel}`;
+
+  if (progress.selectedTrack) {
+    document.getElementById("heroRecommendationTitle").textContent =
+      `Parcours ${trackLabel}`;
+    document.getElementById("heroRecommendationText").textContent =
+      TRACKS[progress.selectedTrack].description;
+  }
 }
 
 function renderChart(type) {
-  if (type === "bars-up") {
+  if (type === "bars") {
     return `
       <svg width="100%" height="110" viewBox="0 0 260 110" aria-hidden="true">
         <rect x="25" y="62" width="30" height="35" rx="8" fill="rgba(52,211,153,.45)"></rect>
@@ -347,23 +362,11 @@ function renderChart(type) {
     `;
   }
 
-  if (type === "rate") {
+  if (type === "brand") {
     return `
       <svg width="100%" height="110" viewBox="0 0 260 110" aria-hidden="true">
-        <rect x="20" y="60" width="26" height="36" rx="8" fill="rgba(34,211,238,.50)"></rect>
-        <rect x="64" y="48" width="26" height="48" rx="8" fill="rgba(34,211,238,.62)"></rect>
-        <rect x="108" y="36" width="26" height="60" rx="8" fill="rgba(34,211,238,.75)"></rect>
-        <rect x="152" y="24" width="26" height="72" rx="8" fill="rgba(96,165,250,.78)"></rect>
-        <rect x="196" y="12" width="26" height="84" rx="8" fill="rgba(96,165,250,1)"></rect>
-      </svg>
-    `;
-  }
-
-  if (type === "market") {
-    return `
-      <svg width="100%" height="110" viewBox="0 0 260 110" aria-hidden="true">
-        <polyline points="16,76 50,46 83,58 118,30 152,43 194,18 242,26"
-          fill="none" stroke="#ec4899" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        <circle cx="95" cy="55" r="34" fill="none" stroke="rgba(244,63,94,.65)" stroke-width="12"></circle>
+        <circle cx="165" cy="55" r="22" fill="rgba(244,63,94,.75)"></circle>
       </svg>
     `;
   }
@@ -374,15 +377,6 @@ function renderChart(type) {
         <rect x="18" y="14" width="224" height="18" rx="9" fill="rgba(139,92,246,.85)"></rect>
         <rect x="36" y="40" width="188" height="18" rx="9" fill="rgba(139,92,246,.7)"></rect>
         <rect x="62" y="66" width="136" height="18" rx="9" fill="rgba(139,92,246,.55)"></rect>
-      </svg>
-    `;
-  }
-
-  if (type === "brand") {
-    return `
-      <svg width="100%" height="110" viewBox="0 0 260 110" aria-hidden="true">
-        <circle cx="95" cy="55" r="34" fill="none" stroke="rgba(244,63,94,.65)" stroke-width="12"></circle>
-        <circle cx="165" cy="55" r="22" fill="rgba(244,63,94,.75)"></circle>
       </svg>
     `;
   }
@@ -402,32 +396,50 @@ function renderChart(type) {
 
   return `
     <svg width="100%" height="110" viewBox="0 0 260 110" aria-hidden="true">
-      <polyline points="16,50 60,54 110,42 150,62 200,32 242,26"
-        fill="none" stroke="#818cf8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <polyline points="16,76 50,46 83,58 118,30 152,43 194,18 242,26"
+        fill="none" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></polyline>
     </svg>
   `;
 }
 
+function renderRecommendedStrip() {
+  const strip = document.getElementById("recommendedStrip");
+  const recs = getRecommendedLessons().slice(0, 2);
+
+  strip.innerHTML = recs.map((lesson) => `
+    <div class="recommended-card">
+      <div class="section-kicker">Recommandé pour toi</div>
+      <h3>${lesson.emoji} ${lesson.title}</h3>
+      <p>${lesson.summary}</p>
+    </div>
+  `).join("");
+}
+
 function renderLessons() {
   const grid = document.getElementById("lessonsGrid");
-  const filtered = lessons.filter(lessonFilterMatch);
+  const visible = getVisibleLessons();
 
-  grid.innerHTML = filtered
+  grid.innerHTML = visible
     .map((lesson) => {
       const done = progress.completedLessons.includes(lesson.id);
 
       return `
         <article class="lesson-card" id="lesson-${lesson.id}">
           <div class="lesson-top">
-            <div class="lesson-icon ${lesson.gradient}">${lesson.icon}</div>
+            <div class="lesson-icon ${lesson.audience === "debutant" ? "gradient-green" : lesson.audience === "intermediaire" ? "gradient-cyan" : "gradient-violet"}">${lesson.emoji}</div>
             <span class="badge-soft">${lesson.duration}</span>
           </div>
 
-          <div class="lesson-category">${lesson.category}</div>
+          <div class="lesson-meta">
+            <span class="lesson-category">${lesson.category}</span>
+            <span class="badge-mini">${getTrackLabel(lesson.audience)}</span>
+            <span class="badge-mini">${lesson.format}</span>
+          </div>
+
           <h3>${lesson.title}</h3>
           <p class="lesson-summary">${lesson.summary}</p>
 
-          <div class="lesson-detail-title">${lesson.deeperTitle}</div>
+          <div class="lesson-detail-title">Approfondissement</div>
           <p class="lesson-detail-text">${lesson.deeperText}</p>
 
           <div class="chart-box">
@@ -435,27 +447,27 @@ function renderLessons() {
           </div>
 
           <ul class="lesson-points">
-            ${lesson.points.map((p) => `<li>${p}</li>`).join("")}
+            ${lesson.bullets.map((p) => `<li>${p}</li>`).join("")}
           </ul>
 
           ${
             lesson.quote
               ? `
-            <div class="quote-box">
-              <p>${lesson.quote}</p>
-              <span>Inspiré du livre Père riche père pauvre</span>
-            </div>
-          `
+                <div class="quote-box">
+                  <p>${lesson.quote}</p>
+                  <span>Inspiré d’une logique de création de valeur durable</span>
+                </div>
+              `
               : ""
           }
 
           <div class="lesson-actions">
-            <span class="badge-level">${lesson.level}</span>
+            <span class="badge-level">${done ? "Validée" : "À lire"}</span>
             <button
               class="validate-btn ${done ? "done" : ""}"
               onclick="completeLesson(${lesson.id})"
             >
-              ${done ? "Terminée +20" : "Valider la leçon"}
+              ${done ? "Terminée +25" : "Valider la leçon"}
             </button>
           </div>
         </article>
@@ -466,35 +478,37 @@ function renderLessons() {
 
 function renderQuizzes() {
   const grid = document.getElementById("quizGrid");
+  const visible = getVisibleQuizzes();
 
-  grid.innerHTML = quizzes
+  grid.innerHTML = visible
     .map((quiz) => {
       const solved = progress.solvedQuizzes.includes(quiz.id);
+      const lesson = lessons.find((l) => l.id === quiz.lessonId);
 
       return `
         <article class="quiz-card" id="quiz-card-${quiz.id}">
           <div class="quiz-card-top">
             <div>
-              <div class="section-kicker">Quiz interactif</div>
+              <div class="section-kicker">QCM ${getTrackLabel(quiz.audience)}</div>
               <h3>${quiz.question}</h3>
             </div>
-            <span class="badge-points">+${quiz.points} pts</span>
+            <span class="badge-points">${lesson?.emoji || "✅"} +${quiz.points} pts</span>
+          </div>
+
+          <div class="lesson-meta">
+            <span class="badge-mini">${lesson?.title || "Leçon"}</span>
           </div>
 
           <div class="quiz-options">
-            ${quiz.options
-              .map(
-                (option, index) => `
-                <button
-                  class="quiz-option"
-                  data-quiz-id="${quiz.id}"
-                  data-option-index="${index}"
-                >
-                  ${option}
-                </button>
-              `
-              )
-              .join("")}
+            ${quiz.options.map((option, index) => `
+              <button
+                class="quiz-option"
+                data-quiz-id="${quiz.id}"
+                data-option-index="${index}"
+              >
+                ${option}
+              </button>
+            `).join("")}
           </div>
 
           <div class="quiz-actions">
@@ -506,7 +520,7 @@ function renderQuizzes() {
 
           ${
             solved
-              ? `<div class="quest-status done">Quiz déjà validé : points déjà gagnés</div>`
+              ? `<div class="quest-status done">QCM déjà validé : points déjà gagnés</div>`
               : ""
           }
         </article>
@@ -517,167 +531,51 @@ function renderQuizzes() {
   attachQuizOptionEvents();
 }
 
-function attachQuizOptionEvents() {
-  document.querySelectorAll(".quiz-option").forEach((button) => {
-    button.addEventListener("click", () => {
-      const quizId = Number(button.dataset.quizId);
-      document
-        .querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`)
-        .forEach((btn) => btn.classList.remove("selected"));
-
-      button.classList.add("selected");
-    });
-  });
-}
-
-function goToLesson(lessonId) {
-  currentFilter = "Tous";
-  document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-  const allBtn = document.querySelector('.filter-btn[data-filter="Tous"]');
-  if (allBtn) allBtn.classList.add("active");
-
-  renderLessons();
-
-  const target = document.getElementById(`lesson-${lessonId}`);
-  if (!target) return;
-
-  target.scrollIntoView({ behavior: "smooth", block: "center" });
-  target.classList.add("flash-target");
-
-  setTimeout(() => {
-    target.classList.remove("flash-target");
-  }, 2200);
-}
-
-function submitQuiz(quizId) {
-  const quiz = quizzes.find((q) => q.id === quizId);
-  const feedback = document.getElementById(`quiz-feedback-${quizId}`);
-  const selectedBtn = document.querySelector(
-    `.quiz-option[data-quiz-id="${quizId}"].selected`
-  );
-
-  if (!selectedBtn) {
-    feedback.innerHTML = `
-      <div class="quiz-feedback bad">
-        Choisis une réponse avant de vérifier.
-      </div>
-    `;
-    return;
-  }
-
-  const selectedIndex = Number(selectedBtn.dataset.optionIndex);
-  const allOptions = document.querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`);
-
-  allOptions.forEach((btn, idx) => {
-    btn.classList.remove("correct", "wrong");
-    if (idx === quiz.correctIndex) btn.classList.add("correct");
-    if (idx === selectedIndex && idx !== quiz.correctIndex) btn.classList.add("wrong");
-  });
-
-  const isCorrect = selectedIndex === quiz.correctIndex;
-  const alreadySolved = progress.solvedQuizzes.includes(quizId);
-
-  if (isCorrect && !alreadySolved) {
-    progress.solvedQuizzes.push(quizId);
-    progress.points += quiz.points;
-    saveProgress();
-  }
-
-  feedback.innerHTML = `
-    <div class="quiz-feedback ${isCorrect ? "good" : "bad"}">
-      <strong>${isCorrect ? "Bonne réponse" : "Pas tout à fait"}</strong>
-      <div class="quiz-explanation">${quiz.explanation}</div>
-      ${
-        isCorrect && !alreadySolved
-          ? `<div class="quest-status done">+${quiz.points} points ajoutés</div>`
-          : ""
-      }
-      ${
-        isCorrect && alreadySolved
-          ? `<div class="quest-status">Déjà validé auparavant : pas de doublon de points</div>`
-          : ""
-      }
-      ${
-        !isCorrect
-          ? `
-            <div class="quiz-feedback-actions">
-              <button class="lesson-link-btn" onclick="goToLesson(${quiz.lessonId})">
-                Revoir la leçon liée
-              </button>
-            </div>
-          `
-          : ""
-      }
-    </div>
-  `;
-
-  rerenderAll();
-}
-
-function resetQuizCard(quizId) {
-  const options = document.querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`);
-  options.forEach((btn) => btn.classList.remove("selected", "correct", "wrong"));
-  document.getElementById(`quiz-feedback-${quizId}`).innerHTML = "";
-}
-
-function completeLesson(lessonId) {
-  if (progress.completedLessons.includes(lessonId)) return;
-  const previousLevel = levelFromPoints(progress.points);
-  progress.completedLessons.push(lessonId);
-  progress.points += 20;
-  saveProgress();
-  rerenderAll();
-  checkLevelUp(previousLevel);
-}
-
 function renderQuests() {
   const grid = document.getElementById("questsGrid");
-  const status = getQuestStatus();
 
   grid.innerHTML = quests
     .map((quest) => {
-      const done = status[quest.id];
+      const unlocked = isQuestUnlocked(quest);
+      const done = isQuestCompleted(quest);
       const claimed = progress.claimedQuests.includes(quest.id);
 
       return `
         <article class="quest-card">
-          <div class="overview-icon">🎯</div>
+          <div class="overview-icon">${unlocked ? "🎯" : "🔒"}</div>
           <h3>${quest.title}</h3>
           <p class="quest-text">Récompense : +${quest.reward} points</p>
-          <div class="quest-status ${done ? "done" : ""}">
-            ${done ? "Objectif atteint" : "En cours"}
+          <div class="quest-status ${done ? "done" : unlocked ? "" : "locked"}">
+            ${
+              !unlocked
+                ? `Débloque au niveau ${quest.unlockLevel}`
+                : done
+                ? "Objectif atteint"
+                : "En cours"
+            }
           </div>
 
           <div class="quest-actions">
-            <span class="badge-mini">${claimed ? "Réclamée" : done ? "Prête" : "Bloquée"}</span>
+            <span class="badge-mini">${claimed ? "Réclamée" : unlocked ? "Ouverte" : "Bloquée"}</span>
             <button
               class="claim-btn ${done && !claimed ? "done" : ""}"
               onclick="claimQuest(${quest.id})"
             >
-              ${claimed ? "Récompense récupérée" : done ? "Réclamer" : "Continuer"}
+              ${
+                claimed
+                  ? "Récompense récupérée"
+                  : unlocked && done
+                  ? "Réclamer"
+                  : unlocked
+                  ? "Continuer"
+                  : "Verrouillée"
+              }
             </button>
           </div>
         </article>
       `;
     })
     .join("");
-}
-
-function claimQuest(questId) {
-  const quest = quests.find((q) => q.id === questId);
-  const status = getQuestStatus();
-  const done = status[questId];
-  const claimed = progress.claimedQuests.includes(questId);
-
-  if (!done || claimed) return;
-
-  const previousLevel = levelFromPoints(progress.points);
-  progress.claimedQuests.push(questId);
-  progress.points += quest.reward;
-  saveProgress();
-  rerenderAll();
-  showRewardOverlay("🎁", "Quête accomplie", `Tu as récupéré +${quest.reward} points pour la quête : ${quest.title}.`);
-  checkLevelUp(previousLevel);
 }
 
 function renderRewards() {
@@ -700,64 +598,306 @@ function renderRewards() {
     .join("");
 }
 
-function showRewardOverlay(icon, title, text) {
-  const overlay = document.getElementById("rewardOverlay");
-  const iconEl = document.getElementById("rewardOverlayIcon");
-  const titleEl = document.getElementById("rewardOverlayTitle");
-  const textEl = document.getElementById("rewardOverlayText");
+function attachQuizOptionEvents() {
+  document.querySelectorAll(".quiz-option").forEach((button) => {
+    button.addEventListener("click", () => {
+      const quizId = Number(button.dataset.quizId);
+      document
+        .querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`)
+        .forEach((btn) => btn.classList.remove("selected"));
 
-  iconEl.textContent = icon;
-  titleEl.textContent = title;
-  textEl.textContent = text;
-  overlay.classList.remove("hidden");
+      button.classList.add("selected");
+    });
+  });
 }
 
-function closeRewardOverlay() {
-  document.getElementById("rewardOverlay").classList.add("hidden");
+function completeLesson(lessonId) {
+  if (progress.completedLessons.includes(lessonId)) return;
+
+  const previousLevel = levelFromPoints(progress.points);
+  const lesson = lessons.find((l) => l.id === lessonId);
+
+  progress.completedLessons.push(lessonId);
+  progress.points += 25;
+  saveProgress();
+  rerenderAll();
+  checkLevelUp(previousLevel, lesson);
 }
 
-function checkLevelUp(previousLevel) {
-  const currentLevel = levelFromPoints(progress.points);
+function submitQuiz(quizId) {
+  const quiz = quizzes.find((q) => q.id === quizId);
+  const lesson = lessons.find((l) => l.id === quiz.lessonId);
+  const feedback = document.getElementById(`quiz-feedback-${quizId}`);
+  const selectedBtn = document.querySelector(`.quiz-option[data-quiz-id="${quizId}"].selected`);
 
-  if (currentLevel > previousLevel) {
-    const reward = rewards.find((r) => r.level === currentLevel);
-    if (reward && !progress.unlockedRewardsShown.includes(currentLevel)) {
-      progress.unlockedRewardsShown.push(currentLevel);
-      saveProgress();
-      showRewardOverlay(
-        reward.icon,
-        `Niveau ${currentLevel} atteint`,
-        `Bravo ! Tu viens de débloquer ${reward.title}.`
-      );
-    } else {
-      showRewardOverlay("🏆", `Niveau ${currentLevel} atteint`, "Tu montes de niveau, continue comme ça.");
-    }
+  if (!selectedBtn) {
+    feedback.innerHTML = `<div class="quiz-feedback bad">Choisis une réponse avant de vérifier.</div>`;
+    return;
   }
+
+  const selectedIndex = Number(selectedBtn.dataset.optionIndex);
+  const allOptions = document.querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`);
+
+  allOptions.forEach((btn, idx) => {
+    btn.classList.remove("correct", "wrong");
+    if (idx === quiz.correctIndex) btn.classList.add("correct");
+    if (idx === selectedIndex && idx !== quiz.correctIndex) btn.classList.add("wrong");
+  });
+
+  const isCorrect = selectedIndex === quiz.correctIndex;
+  const alreadySolved = progress.solvedQuizzes.includes(quizId);
+
+  if (!isCorrect) {
+    feedback.innerHTML = `
+      <div class="quiz-feedback bad">
+        <strong>Réponse incorrecte</strong>
+        <div class="quiz-explanation">${quiz.explanation}</div>
+        <div class="quiz-feedback-actions">
+          <button class="lesson-link-btn" onclick="goToLesson(${quiz.lessonId})">
+            Revoir la leçon liée
+          </button>
+        </div>
+      </div>
+    `;
+
+    showOverlay({
+      emoji: lesson?.emoji || "❌",
+      kicker: "Réponse fausse",
+      title: "Va revoir la leçon",
+      text: `La question était liée à « ${lesson?.title || "cette leçon"} ». Reprends-la puis reviens tester ta compréhension.`,
+      actions: [
+        {
+          label: "Revoir la leçon",
+          primary: true,
+          onClick: () => {
+            closeOverlay();
+            goToLesson(quiz.lessonId);
+          }
+        }
+      ]
+    });
+
+    return;
+  }
+
+  if (!alreadySolved) {
+    const previousLevel = levelFromPoints(progress.points);
+    progress.solvedQuizzes.push(quizId);
+    progress.points += quiz.points;
+    saveProgress();
+    rerenderAll();
+    showOverlay({
+      emoji: lesson?.emoji || "🎉",
+      kicker: "Bonne réponse",
+      title: "QCM validé",
+      text: `Bravo, tu gagnes +${quiz.points} points sur la thématique ${lesson?.category || "du moment"}.`,
+      actions: [
+        {
+          label: "Continuer",
+          primary: true,
+          onClick: closeOverlay
+        }
+      ]
+    });
+    checkLevelUp(previousLevel, lesson);
+  } else {
+    showOverlay({
+      emoji: lesson?.emoji || "✅",
+      kicker: "Déjà validé",
+      title: "Tu connaissais déjà cette notion",
+      text: "Ce QCM a déjà été comptabilisé auparavant, donc pas de double points.",
+      actions: [
+        {
+          label: "Continuer",
+          primary: true,
+          onClick: closeOverlay
+        }
+      ]
+    });
+  }
+}
+
+function resetQuizCard(quizId) {
+  const options = document.querySelectorAll(`.quiz-option[data-quiz-id="${quizId}"]`);
+  options.forEach((btn) => btn.classList.remove("selected", "correct", "wrong"));
+  document.getElementById(`quiz-feedback-${quizId}`).innerHTML = "";
+}
+
+function claimQuest(questId) {
+  const quest = quests.find((q) => q.id === questId);
+  if (!quest) return;
+
+  const unlocked = isQuestUnlocked(quest);
+  const done = isQuestCompleted(quest);
+  const claimed = progress.claimedQuests.includes(questId);
+
+  if (!unlocked || !done || claimed) return;
+
+  const previousLevel = levelFromPoints(progress.points);
+  progress.claimedQuests.push(questId);
+  progress.points += quest.reward;
+  saveProgress();
+  rerenderAll();
+
+  showOverlay({
+    emoji: "🎁",
+    kicker: "Quête accomplie",
+    title: quest.title,
+    text: `Tu viens de récupérer +${quest.reward} points.`,
+    actions: [
+      {
+        label: "Continuer",
+        primary: true,
+        onClick: closeOverlay
+      }
+    ]
+  });
+
+  checkLevelUp(previousLevel);
+}
+
+function goToLesson(lessonId) {
+  lessonAudienceFilter = "all";
+  lessonCategoryFilter = "all";
+
+  document.querySelectorAll("#lessonAudienceFilters .filter-btn").forEach((b) => b.classList.remove("active"));
+  document.querySelector('#lessonAudienceFilters .filter-btn[data-audience-filter="all"]').classList.add("active");
+
+  document.querySelectorAll("#lessonCategoryFilters .filter-btn").forEach((b) => b.classList.remove("active"));
+  document.querySelector('#lessonCategoryFilters .filter-btn[data-category-filter="all"]').classList.add("active");
+
+  renderLessons();
+
+  const target = document.getElementById(`lesson-${lessonId}`);
+  if (!target) return;
+
+  document.getElementById("lessons").scrollIntoView({ behavior: "smooth" });
+
+  setTimeout(() => {
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    target.classList.add("flash-target");
+    setTimeout(() => target.classList.remove("flash-target"), 2400);
+  }, 250);
+}
+
+function showOverlay({ emoji, kicker, title, text, actions = [] }) {
+  const overlay = document.getElementById("resultOverlay");
+  document.getElementById("resultOverlayEmoji").textContent = emoji;
+  document.getElementById("resultOverlayKicker").textContent = kicker;
+  document.getElementById("resultOverlayTitle").textContent = title;
+  document.getElementById("resultOverlayText").textContent = text;
+
+  const actionsWrap = document.getElementById("resultOverlayActions");
+  actionsWrap.innerHTML = "";
+
+  actions.forEach((action) => {
+    const btn = document.createElement("button");
+    btn.className = `overlay-btn ${action.primary ? "primary" : ""}`;
+    btn.textContent = action.label;
+    btn.addEventListener("click", action.onClick);
+    actionsWrap.appendChild(btn);
+  });
+
+  overlay.classList.add("visible");
+}
+
+function closeOverlay() {
+  document.getElementById("resultOverlay").classList.remove("visible");
+}
+
+function checkLevelUp(previousLevel, lesson = null) {
+  const currentLevel = levelFromPoints(progress.points);
+  if (currentLevel <= previousLevel) return;
+
+  const reward = rewards.find((r) => r.level === currentLevel);
+
+  if (!progress.seenLevelRewards.includes(currentLevel)) {
+    progress.seenLevelRewards.push(currentLevel);
+    saveProgress();
+  }
+
+  showOverlay({
+    emoji: lesson?.emoji || reward?.icon || "🏆",
+    kicker: "Niveau supérieur",
+    title: `Niveau ${currentLevel} atteint`,
+    text: `Tu viens de débloquer ${reward?.title || "un nouveau palier"}. Continue, le parcours devient encore plus intéressant.`,
+    actions: [
+      {
+        label: "Continuer",
+        primary: true,
+        onClick: closeOverlay
+      }
+    ]
+  });
+}
+
+function initOnboarding() {
+  const overlay = document.getElementById("onboardingOverlay");
+
+  if (progress.selectedTrack) {
+    overlay.classList.remove("visible");
+  } else {
+    overlay.classList.add("visible");
+  }
+
+  document.querySelectorAll("[data-level-choice]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      progress.selectedTrack = btn.dataset.levelChoice;
+      saveProgress();
+      overlay.classList.remove("visible");
+      rerenderAll();
+    });
+  });
+
+  document.getElementById("changeTrackBtn").addEventListener("click", () => {
+    overlay.classList.add("visible");
+  });
+}
+
+function initFilters() {
+  document.querySelectorAll("[data-audience-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-audience-filter]").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      lessonAudienceFilter = btn.dataset.audienceFilter;
+      renderLessons();
+    });
+  });
+
+  document.querySelectorAll("[data-category-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-category-filter]").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      lessonCategoryFilter = btn.dataset.categoryFilter;
+      renderLessons();
+    });
+  });
+
+  document.querySelectorAll("[data-quiz-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-quiz-filter]").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      quizAudienceFilter = btn.dataset.quizFilter;
+      renderQuizzes();
+    });
+  });
 }
 
 function rerenderAll() {
   updateTopStats();
+  renderRecommendedStrip();
   renderLessons();
   renderQuizzes();
   renderQuests();
   renderRewards();
 }
 
-function initFilters() {
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentFilter = btn.dataset.filter;
-      renderLessons();
-    });
-  });
-}
-
-document.getElementById("closeRewardOverlay").addEventListener("click", closeRewardOverlay);
-document.getElementById("rewardOverlay").addEventListener("click", (e) => {
-  if (e.target.id === "rewardOverlay") closeRewardOverlay();
+document.getElementById("resultOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "resultOverlay") {
+    closeOverlay();
+  }
 });
 
+initOnboarding();
 initFilters();
 rerenderAll();
