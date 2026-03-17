@@ -9,11 +9,14 @@ const lessons = [
     gradient: "gradient-green",
     chart: "bars-up",
     summary:
-      "Une action représente une petite part d’une entreprise. Son prix change selon les attentes, les résultats et l’offre et la demande.",
+      "Une action représente une petite part d’une entreprise. Son prix varie selon les attentes des investisseurs, les résultats publiés et l’état du marché.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Quand une entreprise est cotée en bourse, elle divise son capital en actions. Acheter une action, ce n’est pas juste “jouer en bourse” : c’est devenir propriétaire d’une très petite partie de l’entreprise. Son prix bouge en fonction de ce que le marché pense de son avenir. Si les investisseurs anticipent plus de croissance, le prix peut monter. Si les résultats déçoivent ou que le contexte économique se détériore, il peut baisser.",
     points: [
       "Acheter une action, c’est acheter une part du capital d’une entreprise.",
-      "Le prix d’une action peut monter ou baisser selon les anticipations.",
-      "Un investisseur espère une hausse du cours ou un dividende."
+      "Le prix dépend autant des résultats que des anticipations.",
+      "L’investisseur peut espérer une hausse du cours ou un dividende."
     ]
   },
   {
@@ -26,7 +29,10 @@ const lessons = [
     gradient: "gradient-orange",
     chart: "inflation",
     summary:
-      "L’inflation correspond à une hausse générale des prix. Si elle augmente, ton pouvoir d’achat baisse si tes revenus ne suivent pas.",
+      "L’inflation correspond à une hausse générale des prix. Quand elle augmente trop vite, ton argent perd en pouvoir d’achat.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "L’inflation ne veut pas dire qu’un seul produit devient plus cher, mais qu’en moyenne les prix augmentent dans l’économie. Cela peut venir d’une demande forte, d’un coût de production plus élevé ou encore d’un choc sur l’énergie. Si les salaires n’augmentent pas au même rythme, le niveau de vie peut se dégrader. C’est pour cela que l’inflation est suivie de très près par les banques centrales et les gouvernements.",
     points: [
       "L’inflation est une hausse générale et durable des prix.",
       "Quand les prix montent, ton argent permet d’acheter moins.",
@@ -43,7 +49,10 @@ const lessons = [
     gradient: "gradient-cyan",
     chart: "rate",
     summary:
-      "Les taux influencent le coût du crédit. Quand ils montent, emprunter coûte plus cher, ce qui peut freiner consommation et investissement.",
+      "Les taux d’intérêt influencent le coût du crédit et jouent un rôle central dans l’économie.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Quand les taux montent, emprunter devient plus cher pour les ménages, les entreprises et parfois les États. Cela peut ralentir la consommation, l’investissement et, à terme, calmer l’inflation. À l’inverse, des taux plus faibles rendent le crédit plus accessible et peuvent relancer l’activité. Les taux ont aussi un effet sur les marchés financiers, car ils changent la valeur relative des placements.",
     points: [
       "Des taux plus élevés rendent le crédit plus cher.",
       "Ils peuvent ralentir la demande dans l’économie.",
@@ -60,7 +69,10 @@ const lessons = [
     gradient: "gradient-pink",
     chart: "market",
     summary:
-      "Les marchés réagissent aux attentes : actualité, résultats, taux, confiance et psychologie des investisseurs.",
+      "Les marchés financiers réagissent aux nouvelles, aux taux, aux résultats et à la psychologie collective.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Les prix en bourse ne bougent pas seulement parce qu’un chiffre est bon ou mauvais. Ils bougent surtout selon l’écart entre ce qui était attendu et ce qui arrive réellement. Une très bonne nouvelle déjà anticipée peut donc avoir peu d’effet. Inversement, une petite déception peut faire baisser fortement un titre si le marché espérait beaucoup mieux. La confiance, la peur et la liquidité jouent aussi un rôle majeur.",
     points: [
       "Le marché regarde souvent le futur plus que le présent.",
       "La peur et l’euphorie influencent aussi les prix.",
@@ -78,6 +90,9 @@ const lessons = [
     chart: "funnel",
     summary:
       "Le marketing consiste à comprendre un besoin, créer une offre utile et la rendre désirable pour un public précis.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Le marketing n’est pas simplement de la publicité. C’est une logique de compréhension du client, de définition d’une cible, de création d’une proposition de valeur et de construction d’une offre cohérente. Une bonne stratégie marketing repose sur la clarté : à qui on parle, quel problème on résout, et pourquoi notre solution est intéressante. Une offre forte est une offre qu’on comprend vite.",
     points: [
       "On ne vend pas à tout le monde : il faut cibler.",
       "Une offre claire aide à se différencier.",
@@ -96,7 +111,10 @@ const lessons = [
     gradient: "gradient-rose",
     chart: "brand",
     summary:
-      "Une marque n’est pas seulement un logo : c’est une promesse, une image et une place dans l’esprit du client.",
+      "Une marque n’est pas juste un logo : c’est une promesse, une perception et une position dans l’esprit du client.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "La marque agit comme un raccourci mental. Elle rassure, elle crée de la cohérence et elle influence la préférence. Deux produits proches peuvent être perçus très différemment selon l’univers, les codes visuels, le ton et la réputation de la marque. Une marque forte ne repose pas seulement sur le design, mais aussi sur l’expérience globale qu’elle promet et délivre.",
     points: [
       "Une marque influence la confiance.",
       "Elle peut créer de la préférence.",
@@ -115,7 +133,10 @@ const lessons = [
     gradient: "gradient-lime",
     chart: "assets",
     summary:
-      "Une idée simple : un actif peut apporter de la valeur ou des revenus, alors qu’un passif te coûte de l’argent dans le temps.",
+      "Une idée simple mais puissante : certains choix t’apportent de la valeur, d’autres te coûtent durablement.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Réfléchir en termes d’actifs et de passifs permet de mieux lire sa situation financière. Un actif peut générer un revenu, prendre de la valeur ou soutenir un projet rentable. Un passif, au contraire, implique des coûts, des remboursements ou des dépenses sans contrepartie économique durable. Cette grille de lecture aide à prendre de meilleures décisions, même à petite échelle.",
     points: [
       "Un actif peut générer un revenu ou prendre de la valeur.",
       "Un passif peut coûter à entretenir ou à rembourser.",
@@ -134,7 +155,10 @@ const lessons = [
     gradient: "gradient-indigo",
     chart: "cashflow",
     summary:
-      "Le cashflow correspond à l’argent qui entre et qui sort. Une bonne idée sur le papier peut échouer si le cashflow est mauvais.",
+      "Le cashflow correspond aux entrées et sorties d’argent. C’est une mesure concrète de la santé d’un projet.",
+    deeperTitle: "À comprendre",
+    deeperText:
+      "Un projet peut sembler rentable sur le papier tout en ayant un mauvais cashflow. C’est un point crucial, car sans liquidités suffisantes, il devient difficile de payer les charges, d’investir ou simplement de tenir dans la durée. Le cashflow oblige à regarder la réalité : quand l’argent entre, quand il sort, et si le rythme est soutenable. C’est une logique indispensable pour tout projet business.",
     points: [
       "Le chiffre d’affaires seul ne suffit pas.",
       "Il faut suivre les entrées et sorties d’argent.",
@@ -148,6 +172,7 @@ const lessons = [
 const quizzes = [
   {
     id: 1,
+    lessonId: 1,
     question: "Une action correspond à…",
     options: [
       "Une part d’entreprise",
@@ -162,6 +187,7 @@ const quizzes = [
   },
   {
     id: 2,
+    lessonId: 2,
     question: "L’inflation signifie…",
     options: [
       "Une baisse générale des prix",
@@ -176,6 +202,7 @@ const quizzes = [
   },
   {
     id: 3,
+    lessonId: 7,
     question: "Dans l’idée actifs vs passifs, un actif…",
     options: [
       "Te retire de l’argent",
@@ -190,6 +217,7 @@ const quizzes = [
   },
   {
     id: 4,
+    lessonId: 5,
     question: "Le marketing sert surtout à…",
     options: [
       "Créer de la valeur pour un public ciblé",
@@ -204,6 +232,7 @@ const quizzes = [
   },
   {
     id: 5,
+    lessonId: 8,
     question: "Le cashflow, c’est…",
     options: [
       "L’image de marque",
@@ -233,13 +262,14 @@ const rewards = [
   { level: 6, title: "Couronne Mind & Markets", icon: "👑" }
 ];
 
-const STORAGE_KEY = "mind_markets_progress_static";
+const STORAGE_KEY = "mind_markets_progress_static_v2";
 
 const defaultProgress = {
   points: 0,
   completedLessons: [],
   solvedQuizzes: [],
-  claimedQuests: []
+  claimedQuests: [],
+  unlockedRewardsShown: []
 };
 
 let progress = loadProgress();
@@ -387,7 +417,7 @@ function renderLessons() {
       const done = progress.completedLessons.includes(lesson.id);
 
       return `
-        <article class="lesson-card">
+        <article class="lesson-card" id="lesson-${lesson.id}">
           <div class="lesson-top">
             <div class="lesson-icon ${lesson.gradient}">${lesson.icon}</div>
             <span class="badge-soft">${lesson.duration}</span>
@@ -396,6 +426,9 @@ function renderLessons() {
           <div class="lesson-category">${lesson.category}</div>
           <h3>${lesson.title}</h3>
           <p class="lesson-summary">${lesson.summary}</p>
+
+          <div class="lesson-detail-title">${lesson.deeperTitle}</div>
+          <p class="lesson-detail-text">${lesson.deeperText}</p>
 
           <div class="chart-box">
             ${renderChart(lesson.chart)}
@@ -497,6 +530,25 @@ function attachQuizOptionEvents() {
   });
 }
 
+function goToLesson(lessonId) {
+  currentFilter = "Tous";
+  document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+  const allBtn = document.querySelector('.filter-btn[data-filter="Tous"]');
+  if (allBtn) allBtn.classList.add("active");
+
+  renderLessons();
+
+  const target = document.getElementById(`lesson-${lessonId}`);
+  if (!target) return;
+
+  target.scrollIntoView({ behavior: "smooth", block: "center" });
+  target.classList.add("flash-target");
+
+  setTimeout(() => {
+    target.classList.remove("flash-target");
+  }, 2200);
+}
+
 function submitQuiz(quizId) {
   const quiz = quizzes.find((q) => q.id === quizId);
   const feedback = document.getElementById(`quiz-feedback-${quizId}`);
@@ -545,6 +597,17 @@ function submitQuiz(quizId) {
           ? `<div class="quest-status">Déjà validé auparavant : pas de doublon de points</div>`
           : ""
       }
+      ${
+        !isCorrect
+          ? `
+            <div class="quiz-feedback-actions">
+              <button class="lesson-link-btn" onclick="goToLesson(${quiz.lessonId})">
+                Revoir la leçon liée
+              </button>
+            </div>
+          `
+          : ""
+      }
     </div>
   `;
 
@@ -559,10 +622,12 @@ function resetQuizCard(quizId) {
 
 function completeLesson(lessonId) {
   if (progress.completedLessons.includes(lessonId)) return;
+  const previousLevel = levelFromPoints(progress.points);
   progress.completedLessons.push(lessonId);
   progress.points += 20;
   saveProgress();
   rerenderAll();
+  checkLevelUp(previousLevel);
 }
 
 function renderQuests() {
@@ -606,10 +671,13 @@ function claimQuest(questId) {
 
   if (!done || claimed) return;
 
+  const previousLevel = levelFromPoints(progress.points);
   progress.claimedQuests.push(questId);
   progress.points += quest.reward;
   saveProgress();
   rerenderAll();
+  showRewardOverlay("🎁", "Quête accomplie", `Tu as récupéré +${quest.reward} points pour la quête : ${quest.title}.`);
+  checkLevelUp(previousLevel);
 }
 
 function renderRewards() {
@@ -632,6 +700,41 @@ function renderRewards() {
     .join("");
 }
 
+function showRewardOverlay(icon, title, text) {
+  const overlay = document.getElementById("rewardOverlay");
+  const iconEl = document.getElementById("rewardOverlayIcon");
+  const titleEl = document.getElementById("rewardOverlayTitle");
+  const textEl = document.getElementById("rewardOverlayText");
+
+  iconEl.textContent = icon;
+  titleEl.textContent = title;
+  textEl.textContent = text;
+  overlay.classList.remove("hidden");
+}
+
+function closeRewardOverlay() {
+  document.getElementById("rewardOverlay").classList.add("hidden");
+}
+
+function checkLevelUp(previousLevel) {
+  const currentLevel = levelFromPoints(progress.points);
+
+  if (currentLevel > previousLevel) {
+    const reward = rewards.find((r) => r.level === currentLevel);
+    if (reward && !progress.unlockedRewardsShown.includes(currentLevel)) {
+      progress.unlockedRewardsShown.push(currentLevel);
+      saveProgress();
+      showRewardOverlay(
+        reward.icon,
+        `Niveau ${currentLevel} atteint`,
+        `Bravo ! Tu viens de débloquer ${reward.title}.`
+      );
+    } else {
+      showRewardOverlay("🏆", `Niveau ${currentLevel} atteint`, "Tu montes de niveau, continue comme ça.");
+    }
+  }
+}
+
 function rerenderAll() {
   updateTopStats();
   renderLessons();
@@ -650,6 +753,11 @@ function initFilters() {
     });
   });
 }
+
+document.getElementById("closeRewardOverlay").addEventListener("click", closeRewardOverlay);
+document.getElementById("rewardOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "rewardOverlay") closeRewardOverlay();
+});
 
 initFilters();
 rerenderAll();
