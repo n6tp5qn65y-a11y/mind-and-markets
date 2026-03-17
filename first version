@@ -1,0 +1,826 @@
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BarChart3,
+  BookOpen,
+  Brain,
+  Briefcase,
+  CheckCircle2,
+  ChevronRight,
+  LineChart,
+  Linkedin,
+  Menu,
+  Sparkles,
+  Target,
+  TrendingUp,
+  X,
+} from "lucide-react";
+
+const lessons = [
+  {
+    id: 1,
+    category: "Marchés financiers",
+    title: "C’est quoi une action ?",
+    duration: "2 min",
+    level: "Débutant",
+    description:
+      "Comprends simplement ce qu’est une action, pourquoi son prix change et pourquoi des entreprises sont cotées en bourse.",
+    bullets: [
+      "Une action = une petite part d’une entreprise",
+      "Le prix varie selon l’offre, la demande et les anticipations",
+      "Détenir une action ne veut pas dire diriger l’entreprise",
+    ],
+  },
+  {
+    id: 2,
+    category: "Économie",
+    title: "Pourquoi les prix augmentent ?",
+    duration: "3 min",
+    level: "Essentiel",
+    description:
+      "Une introduction claire à l’inflation, au pouvoir d’achat et au rôle des banques centrales.",
+    bullets: [
+      "L’inflation = hausse générale des prix",
+      "Si les prix montent, ton argent achète moins",
+      "Les taux peuvent ralentir l’économie",
+    ],
+  },
+  {
+    id: 3,
+    category: "Business",
+    title: "Les bases du marketing",
+    duration: "4 min",
+    level: "Business",
+    description:
+      "Découvre cible, proposition de valeur, différenciation et positionnement sans jargon inutile.",
+    bullets: [
+      "On ne vend pas à tout le monde",
+      "Une marque doit être claire dans l’esprit du client",
+      "La différenciation rend l’offre mémorable",
+    ],
+  },
+  {
+    id: 4,
+    category: "Marchés financiers",
+    title: "Pourquoi les marchés bougent ?",
+    duration: "3 min",
+    level: "Clair",
+    description:
+      "Actualité, résultats d’entreprises, taux d’intérêt, confiance : les grandes raisons des mouvements de marché.",
+    bullets: [
+      "Les marchés réagissent aux attentes",
+      "La peur et l’euphorie comptent aussi",
+      "Un prix reflète souvent le futur, pas le présent",
+    ],
+  },
+  {
+    id: 5,
+    category: "Business",
+    title: "C’est quoi une marque ?",
+    duration: "2 min",
+    level: "Débutant",
+    description:
+      "Comprends comment une marque crée de la confiance, de la préférence et de la valeur perçue.",
+    bullets: [
+      "Une marque n’est pas juste un logo",
+      "Elle influence la perception et le prix accepté",
+      "Elle doit être cohérente partout",
+    ],
+  },
+  {
+    id: 6,
+    category: "Économie",
+    title: "Taux d’intérêt : à quoi ça sert ?",
+    duration: "3 min",
+    level: "Essentiel",
+    description:
+      "Pourquoi les banques centrales montent ou baissent les taux, et quel impact cela peut avoir sur toi.",
+    bullets: [
+      "Les taux influencent le crédit et la consommation",
+      "Ils peuvent calmer l’inflation",
+      "Ils ont un effet sur l’investissement et les marchés",
+    ],
+  },
+];
+
+const quizData = [
+  {
+    id: 1,
+    question: "Une action, c’est quoi ?",
+    options: [
+      "Une part d’entreprise",
+      "Un prêt bancaire",
+      "Une taxe financière",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Une action représente une petite part du capital d’une entreprise cotée.",
+  },
+  {
+    id: 2,
+    question: "L’inflation signifie…",
+    options: [
+      "Une baisse générale des prix",
+      "Une hausse générale des prix",
+      "Une hausse des salaires uniquement",
+    ],
+    correctIndex: 1,
+    explanation:
+      "L’inflation correspond à une hausse générale et durable des prix.",
+  },
+  {
+    id: 3,
+    question: "Le marketing sert surtout à…",
+    options: [
+      "Créer de la valeur pour un public ciblé",
+      "Faire de la publicité seulement",
+      "Copier les concurrents",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Le marketing ne se limite pas à la pub : il aide à comprendre le client et à construire une offre adaptée.",
+  },
+];
+
+const stats = [
+  { label: "Leçons courtes", value: "6+" },
+  { label: "Quiz interactifs", value: "3" },
+  { label: "Niveau requis", value: "0" },
+  { label: "Style", value: "Simple" },
+];
+
+const values = [
+  {
+    icon: BookOpen,
+    title: "Simple",
+    text: "Des explications accessibles, pensées pour les étudiants et débutants.",
+  },
+  {
+    icon: Brain,
+    title: "Ludique",
+    text: "Des quiz et un format court pour retenir plus vite et rester motivé.",
+  },
+  {
+    icon: Briefcase,
+    title: "Utile",
+    text: "Un projet crédible à montrer sur LinkedIn, en entretien ou dans un portfolio.",
+  },
+];
+
+function NavBar() {
+  const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: "Accueil", href: "#home" },
+    { label: "Leçons", href: "#lessons" },
+    { label: "Quiz", href: "#quiz" },
+    { label: "À propos", href: "#about" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07111f]/85 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
+        <a href="#home" className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-900/30">
+            <LineChart className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-lg font-bold tracking-tight text-white">
+              Mind & Markets
+            </p>
+            <p className="text-xs text-slate-400">
+              Business expliqué simplement
+            </p>
+          </div>
+        </a>
+
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-slate-300 transition hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden md:block">
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5"
+          >
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+          </a>
+        </div>
+
+        <button
+          aria-label="Ouvrir le menu"
+          className="rounded-2xl border border-white/10 p-2 text-white md:hidden"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-white/10 bg-[#0a1627] md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-2xl px-3 py-3 text-slate-200 transition hover:bg-white/5"
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 font-semibold text-slate-950"
+            >
+              <Linkedin className="h-4 w-4" />
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="home" className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_30%),radial-gradient(circle_at_80%_30%,rgba(16,185,129,0.1),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.1),transparent_26%)]" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 md:px-10 lg:grid-cols-2 lg:px-16 lg:py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col justify-center"
+        >
+          <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300">
+            <Sparkles className="h-4 w-4" />
+            Plateforme d’apprentissage business & marchés
+          </div>
+
+          <h1 className="max-w-2xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+            Apprendre le <span className="text-emerald-400">business</span> et
+            les <span className="text-emerald-400">marchés financiers</span>
+            <br className="hidden md:block" /> de manière simple, ludique et
+            interactive.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+            Mind & Markets est un site pensé pour les étudiants et débutants qui
+            veulent comprendre la bourse, l’inflation, le marketing et
+            l’économie sans jargon inutile.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#lessons"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-6 py-3.5 font-semibold text-slate-950 shadow-xl shadow-emerald-900/30 transition hover:-translate-y-0.5"
+            >
+              Explorer les leçons
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#quiz"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
+            >
+              Tester un quiz
+              <ChevronRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur"
+              >
+                <p className="text-sm text-slate-400">{stat.label}</p>
+                <p className="mt-2 text-2xl font-bold text-white">
+                  {stat.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="flex items-center justify-center"
+        >
+          <div className="relative w-full max-w-2xl rounded-[34px] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl">
+            <div className="absolute -left-6 top-10 hidden h-44 w-28 rounded-[28px] bg-emerald-500 md:block" />
+            <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#091321] p-5">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-emerald-300">
+                    Preview
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold text-white">
+                    Ton univers d’apprentissage
+                  </h2>
+                </div>
+                <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-300">
+                  Débutant friendly
+                </div>
+              </div>
+
+              <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="rounded-[26px] bg-slate-950 p-5">
+                  <div className="mb-4 rounded-[22px] bg-[linear-gradient(135deg,#20c778,#0a1321_70%)] p-5">
+                    <div className="flex min-h-[220px] flex-col justify-between">
+                      <div>
+                        <p className="text-sm text-emerald-100/80">
+                          Leçon du jour
+                        </p>
+                        <h3 className="mt-2 text-2xl font-semibold text-white">
+                          Pourquoi les marchés bougent ?
+                        </h3>
+                        <p className="mt-3 max-w-md text-sm leading-6 text-emerald-50/85">
+                          Actualité, taux, confiance, résultats : les grandes
+                          raisons qui influencent les prix.
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-center text-xs text-white">
+                        <div className="rounded-2xl bg-white/10 px-2 py-3">
+                          Actualité
+                        </div>
+                        <div className="rounded-2xl bg-white/10 px-2 py-3">
+                          Taux
+                        </div>
+                        <div className="rounded-2xl bg-white/10 px-2 py-3">
+                          Confiance
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-sm text-slate-400">Format</p>
+                      <p className="mt-1 font-semibold text-white">
+                        Leçons courtes
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-sm text-slate-400">Objectif</p>
+                      <p className="mt-1 font-semibold text-white">
+                        Comprendre vite
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-[26px] border border-white/10 bg-slate-950 p-5">
+                    <p className="text-sm text-slate-400">Positionnement</p>
+                    <h3 className="mt-2 text-xl font-semibold text-white">
+                      Une étudiante qui apprend et explique simplement
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                      Un angle crédible et naturel pour LinkedIn, un portfolio
+                      ou un entretien.
+                    </p>
+                  </div>
+                  <div className="rounded-[26px] border border-white/10 bg-slate-950 p-5">
+                    <p className="text-sm text-slate-400">Exemples de sujets</p>
+                    <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                      <li>• C’est quoi une action ?</li>
+                      <li>• Pourquoi les prix augmentent ?</li>
+                      <li>• Comment une marque se différencie ?</li>
+                      <li>• Quiz express à la fin</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function ValueSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-6 md:px-10 lg:px-16">
+      <div className="grid gap-5 md:grid-cols-3">
+        {values.map((item) => {
+          const Icon = item.icon;
+          return (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-[30px] border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500 text-slate-950">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-5 text-2xl font-bold text-white">
+                {item.title}
+              </h3>
+              <p className="mt-3 leading-7 text-slate-300">{item.text}</p>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function LessonsSection() {
+  const [filter, setFilter] = useState("Tous");
+
+  const categories = ["Tous", ...new Set(lessons.map((lesson) => lesson.category))];
+
+  const filteredLessons = useMemo(() => {
+    if (filter === "Tous") return lessons;
+    return lessons.filter((lesson) => lesson.category === filter);
+  }, [filter]);
+
+  return (
+    <section
+      id="lessons"
+      className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-16"
+    >
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">
+            Les leçons
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
+            Commencer simplement
+          </h2>
+        </div>
+        <p className="max-w-2xl text-slate-300">
+          Des contenus courts, concrets et agréables à lire pour comprendre vite
+          sans se sentir perdu.
+        </p>
+      </div>
+
+      <div className="mt-8 flex flex-wrap gap-3">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setFilter(category)}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+              filter === category
+                ? "bg-emerald-500 text-slate-950"
+                : "border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {filteredLessons.map((lesson, index) => (
+          <motion.article
+            key={lesson.id}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: index * 0.03 }}
+            className="rounded-[30px] border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                {lesson.category}
+              </span>
+              <span className="text-sm text-slate-400">{lesson.duration}</span>
+            </div>
+
+            <h3 className="mt-4 text-2xl font-bold text-white">
+              {lesson.title}
+            </h3>
+            <p className="mt-3 leading-7 text-slate-300">
+              {lesson.description}
+            </p>
+
+            <ul className="mt-5 space-y-3">
+              {lesson.bullets.map((bullet) => (
+                <li
+                  key={bullet}
+                  className="flex items-start gap-3 text-sm leading-6 text-slate-200"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 flex items-center justify-between">
+              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">
+                {lesson.level}
+              </span>
+              <button className="inline-flex items-center gap-2 rounded-2xl border border-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10">
+                Lire
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function QuizCard({ quiz, index }) {
+  const [selected, setSelected] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  const isCorrect = selected === quiz.correctIndex;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.45, delay: index * 0.04 }}
+      className="rounded-[30px] border border-white/10 bg-slate-950 p-6"
+    >
+      <p className="text-sm text-slate-400">Quiz express</p>
+      <h3 className="mt-2 text-2xl font-bold text-white">{quiz.question}</h3>
+
+      <div className="mt-5 grid gap-3">
+        {quiz.options.map((option, optionIndex) => {
+          const active = selected === optionIndex;
+          const showCorrect = submitted && optionIndex === quiz.correctIndex;
+          const showWrong = submitted && active && optionIndex !== quiz.correctIndex;
+
+          return (
+            <button
+              key={option}
+              onClick={() => setSelected(optionIndex)}
+              className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${
+                showCorrect
+                  ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-200"
+                  : showWrong
+                  ? "border-red-400/40 bg-red-400/10 text-red-200"
+                  : active
+                  ? "border-white/30 bg-white/10 text-white"
+                  : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-3">
+        <button
+          onClick={() => setSubmitted(true)}
+          disabled={selected === null}
+          className="rounded-2xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Vérifier
+        </button>
+        <button
+          onClick={() => {
+            setSelected(null);
+            setSubmitted(false);
+          }}
+          className="rounded-2xl border border-white/10 px-4 py-2.5 text-sm font-semibold text-white"
+        >
+          Recommencer
+        </button>
+      </div>
+
+      {submitted && (
+        <div
+          className={`mt-5 rounded-2xl border p-4 text-sm leading-6 ${
+            isCorrect
+              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
+              : "border-red-400/30 bg-red-400/10 text-red-100"
+          }`}
+        >
+          <p className="font-semibold">
+            {isCorrect ? "Bonne réponse" : "Pas tout à fait"}
+          </p>
+          <p className="mt-1">{quiz.explanation}</p>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+function QuizSection() {
+  return (
+    <section id="quiz" className="mx-auto max-w-7xl px-6 py-6 md:px-10 lg:px-16">
+      <div className="rounded-[38px] border border-white/10 bg-[linear-gradient(135deg,#08111d,#0e1524)] p-8 shadow-2xl shadow-black/30 md:p-10">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">
+              Le côté ludique
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
+              Apprendre avec des quiz
+            </h2>
+            <p className="mt-4 max-w-xl leading-7 text-slate-300">
+              Ton site ne doit pas être passif. Les quiz rendent l’apprentissage
+              plus vivant, plus engageant et plus mémorable.
+            </p>
+
+            <div className="mt-6 space-y-4">
+              <div className="rounded-[26px] border border-emerald-400/20 bg-emerald-400/10 p-5 text-emerald-50">
+                <p className="font-semibold">Pourquoi c’est fort pour ton profil ?</p>
+                <p className="mt-2 text-sm leading-6 text-emerald-100/90">
+                  Parce que tu montres à la fois ton intérêt pour le business, ta
+                  capacité à vulgariser et ton sens du digital.
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-white/10 bg-white/5 p-5">
+                  <Target className="h-5 w-5 text-emerald-400" />
+                  <p className="mt-3 font-semibold text-white">Contenu court</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    Idéal pour retenir vite et ne pas perdre l’utilisateur.
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-white/10 bg-white/5 p-5">
+                  <BarChart3 className="h-5 w-5 text-emerald-400" />
+                  <p className="mt-3 font-semibold text-white">Format interactif</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    Plus moderne qu’un simple blog ou qu’une page figée.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            {quizData.map((quiz, index) => (
+              <QuizCard key={quiz.id} quiz={quiz} index={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section id="about" className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-16">
+      <div className="grid gap-6 lg:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="rounded-[32px] border border-white/10 bg-white/5 p-7 lg:col-span-2"
+        >
+          <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">
+            À propos
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-white">
+            Pourquoi Mind & Markets ?
+          </h2>
+          <p className="mt-4 max-w-3xl leading-7 text-slate-300">
+            L’idée est simple : apprendre en expliquant. Le site assume un
+            positionnement clair, celui d’une étudiante qui découvre, structure
+            et simplifie des notions parfois intimidantes. C’est cohérent,
+            crédible et utile pour d’autres débutants.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-[24px] border border-white/10 bg-slate-950 p-5">
+              <TrendingUp className="h-5 w-5 text-emerald-400" />
+              <p className="mt-3 font-semibold text-white">Objectif personnel</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                Progresser toi-même en business, marchés et marketing en
+                construisant un projet concret.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-slate-950 p-5">
+              <Brain className="h-5 w-5 text-emerald-400" />
+              <p className="mt-3 font-semibold text-white">Objectif public</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                Aider d’autres étudiants à mieux comprendre les bases avec une
+                approche plus rassurante.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="rounded-[32px] bg-emerald-500 p-7 text-slate-950"
+        >
+          <p className="text-sm font-medium uppercase tracking-[0.25em]">
+            Résumé
+          </p>
+          <p className="mt-4 text-3xl font-bold leading-tight">
+            Du business expliqué simplement avec une touche interactive.
+          </p>
+          <p className="mt-4 text-sm leading-6 text-slate-900/80">
+            Parfait pour un lien LinkedIn, une bio, un portfolio étudiant ou un
+            projet personnel à faire évoluer.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function CTASection() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 pb-16 md:px-10 lg:px-16">
+      <div className="rounded-[36px] border border-white/10 bg-white/5 p-8 text-center backdrop-blur md:p-10">
+        <p className="text-sm uppercase tracking-[0.25em] text-emerald-300">
+          Mind & Markets
+        </p>
+        <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+          Un site simple, beau et crédible à partager dans ta bio
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-300">
+          Tu peux commencer avec quelques leçons et quiz, puis enrichir
+          progressivement le contenu au fil de ton apprentissage.
+        </p>
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="#lessons"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-6 py-3.5 font-semibold text-slate-950 transition hover:-translate-y-0.5"
+          >
+            Voir les contenus
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
+          >
+            <Linkedin className="h-4 w-4" />
+            Ajouter ton LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="border-t border-white/10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-10 lg:px-16">
+        <div>
+          <p className="font-semibold text-white">Mind & Markets</p>
+          <p className="mt-1">Du business expliqué simplement.</p>
+        </div>
+        <div className="flex flex-wrap gap-4">
+          <a href="#home" className="transition hover:text-white">
+            Accueil
+          </a>
+          <a href="#lessons" className="transition hover:text-white">
+            Leçons
+          </a>
+          <a href="#quiz" className="transition hover:text-white">
+            Quiz
+          </a>
+          <a href="#about" className="transition hover:text-white">
+            À propos
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function MindAndMarketsSite() {
+  return (
+    <div className="min-h-screen bg-[#07111f] text-white selection:bg-emerald-400 selection:text-slate-950">
+      <NavBar />
+      <Hero />
+      <ValueSection />
+      <LessonsSection />
+      <QuizSection />
+      <AboutSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+}
