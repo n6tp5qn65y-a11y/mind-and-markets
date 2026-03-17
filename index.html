@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind & Markets</title>
+  <meta
+    name="description"
+    content="Mind & Markets - Business et marchés financiers expliqués simplement, avec quiz, niveaux, quêtes et récompenses."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
 
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="brand-icon">↗</div>
+        <div>
+          <div class="brand-title">Mind & Markets</div>
+          <div class="brand-subtitle">Learn • Play • Level Up</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#lessons">Leçons</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#quests">Quêtes</a>
+        <a href="#rewards">Récompenses</a>
+      </nav>
+
+      <a class="nav-btn" href="#quiz">Commencer</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">Business et marchés expliqués simplement</div>
+          <h1>
+            Apprends le business et les marchés
+            <span>de façon ludique</span>
+          </h1>
+          <p class="hero-text">
+            Des leçons visuelles, des QCM interactifs, des points cumulables,
+            des niveaux, des quêtes et des récompenses pour progresser sans jargon.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#lessons" class="btn btn-primary">Explorer les leçons</a>
+            <a href="#quiz" class="btn btn-secondary">Faire un quiz</a>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>Niveau</span>
+              <strong id="levelStat">1</strong>
+            </div>
+            <div class="stat-card">
+              <span>Points</span>
+              <strong id="pointsStat">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Leçons terminées</span>
+              <strong id="lessonsStat">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Quiz réussis</span>
+              <strong id="quizStat">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel glass">
+          <div class="hero-panel-top">
+            <div>
+              <div class="mini-label">Mission du jour</div>
+              <h2>Comprendre les actifs</h2>
+            </div>
+            <div class="mini-badge">Débutant friendly</div>
+          </div>
+
+          <div class="hero-highlight">
+            <div class="hero-highlight-title">Idée-clé business</div>
+            <p>
+              Un actif est un élément qui peut t’apporter de la valeur ou des revenus.
+              Un passif te coûte de l’argent à long terme.
+            </p>
+            <div class="mini-asset-chart">
+              <div class="mini-box good">
+                <span>Actifs</span>
+                <strong>↑</strong>
+              </div>
+              <div class="mini-box bad">
+                <span>Passifs</span>
+                <strong>↓</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-label-row">
+              <span>Progression vers le niveau suivant</span>
+              <span id="progressText">0 / 150</span>
+            </div>
+            <div class="progress-bar">
+              <div id="progressBarFill" class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container overview-grid">
+        <div class="overview-card glass">
+          <div class="overview-icon">⚡</div>
+          <h3>Points cumulables</h3>
+          <p>Chaque leçon validée et chaque quiz réussi te fait gagner des points.</p>
+        </div>
+        <div class="overview-card glass">
+          <div class="overview-icon">🏆</div>
+          <h3>Niveaux</h3>
+          <p>Tu montes de niveau automatiquement selon ton total de points.</p>
+        </div>
+        <div class="overview-card glass">
+          <div class="overview-icon">🎯</div>
+          <h3>Quêtes</h3>
+          <p>Des objectifs simples t’aident à savoir quoi faire ensuite.</p>
+        </div>
+        <div class="overview-card glass">
+          <div class="overview-icon">🎁</div>
+          <h3>Récompenses</h3>
+          <p>Des badges et récompenses se débloquent à mesure que tu progresses.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="lessons" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Les leçons</div>
+            <h2>Cours illustrés et faciles à retenir</h2>
+          </div>
+          <p>
+            Finance, économie et business : des contenus courts, clairs
+            et visuels pour apprendre vite.
+          </p>
+        </div>
+
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="Tous">Tous</button>
+          <button class="filter-btn" data-filter="Marchés financiers">Marchés financiers</button>
+          <button class="filter-btn" data-filter="Économie">Économie</button>
+          <button class="filter-btn" data-filter="Business">Business</button>
+        </div>
+
+        <div id="lessonsGrid" class="cards-grid"></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Les QCM</div>
+            <h2>Teste tes connaissances</h2>
+          </div>
+          <p>
+            Chaque bonne réponse te rapporte des points. La progression est sauvegardée
+            dans ton navigateur.
+          </p>
+        </div>
+
+        <div id="quizGrid" class="quiz-grid"></div>
+      </div>
+    </section>
+
+    <section id="quests" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Les quêtes</div>
+            <h2>Des missions pour avancer</h2>
+          </div>
+          <p>Complète des objectifs et réclame tes bonus.</p>
+        </div>
+
+        <div id="questsGrid" class="quests-grid"></div>
+      </div>
+    </section>
+
+    <section id="rewards" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Récompenses</div>
+            <h2>Badges et niveaux débloqués</h2>
+          </div>
+          <p>Plus tu apprends, plus tu débloques d’éléments.</p>
+        </div>
+
+        <div id="rewardsGrid" class="rewards-grid"></div>
+      </div>
+    </section>
+
+    <section class="section final-cta-section">
+      <div class="container">
+        <div class="final-cta glass">
+          <div>
+            <div class="section-kicker">Mind & Markets</div>
+            <h2>Un site beau, utile et motivant à partager dans ta bio</h2>
+            <p>
+              Tu peux ensuite l’enrichir avec de nouvelles leçons, de nouveaux quiz
+              et encore plus de récompenses.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a href="#lessons" class="btn btn-primary">Voir les leçons</a>
+            <a href="#quiz" class="btn btn-secondary">Faire un quiz</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>
+        <div class="footer-title">Mind & Markets</div>
+        <div class="footer-subtitle">
+          Business et marchés financiers expliqués simplement.
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Accueil</a>
+        <a href="#lessons">Leçons</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#quests">Quêtes</a>
+        <a href="#rewards">Récompenses</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
