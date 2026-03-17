@@ -6,7 +6,7 @@
   <title>Mind & Markets</title>
   <meta
     name="description"
-    content="Mind & Markets - Business et marchés financiers expliqués simplement, avec quiz, niveaux, quêtes et récompenses."
+    content="Mind & Markets - Business et marchés financiers expliqués simplement, avec leçons visuelles, quiz interactifs, niveaux, quêtes et récompenses."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,10 +32,12 @@
       </a>
 
       <nav class="nav-links">
+        <a href="#dashboard">Dashboard</a>
         <a href="#lessons">Leçons</a>
         <a href="#quiz">Quiz</a>
         <a href="#quests">Quêtes</a>
         <a href="#rewards">Récompenses</a>
+        <a href="#about">À propos</a>
       </nav>
 
       <a class="nav-btn" href="#quiz">Commencer</a>
@@ -52,8 +54,8 @@
             <span>de façon ludique</span>
           </h1>
           <p class="hero-text">
-            Des leçons visuelles, des QCM interactifs, des points cumulables,
-            des niveaux, des quêtes et des récompenses pour progresser sans jargon.
+            Une plateforme pensée pour apprendre vite, visualiser les notions,
+            s’entraîner avec des QCM, gagner des points et progresser niveau après niveau.
           </p>
 
           <div class="hero-actions">
@@ -93,8 +95,9 @@
           <div class="hero-highlight">
             <div class="hero-highlight-title">Idée-clé business</div>
             <p>
-              Un actif est un élément qui peut t’apporter de la valeur ou des revenus.
-              Un passif te coûte de l’argent à long terme.
+              Un actif peut t’apporter de la valeur ou des revenus. Un passif,
+              lui, te coûte de l’argent dans le temps. Cette distinction change
+              complètement ta façon de raisonner.
             </p>
             <div class="mini-asset-chart">
               <div class="mini-box good">
@@ -121,27 +124,76 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="container overview-grid">
-        <div class="overview-card glass">
-          <div class="overview-icon">⚡</div>
-          <h3>Points cumulables</h3>
-          <p>Chaque leçon validée et chaque quiz réussi te fait gagner des points.</p>
+    <section id="dashboard" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Dashboard</div>
+            <h2>Ton espace de progression</h2>
+          </div>
+          <p>
+            Une vue claire sur ta progression, tes objectifs et tes prochains déblocages.
+          </p>
         </div>
-        <div class="overview-card glass">
-          <div class="overview-icon">🏆</div>
-          <h3>Niveaux</h3>
-          <p>Tu montes de niveau automatiquement selon ton total de points.</p>
+
+        <div class="overview-grid">
+          <div class="overview-card glass">
+            <div class="overview-icon">⚡</div>
+            <h3>Points cumulables</h3>
+            <p>Chaque leçon validée et chaque quiz réussi te rapporte des points.</p>
+          </div>
+          <div class="overview-card glass">
+            <div class="overview-icon">🏆</div>
+            <h3>Niveaux</h3>
+            <p>Tu montes automatiquement de niveau au fur et à mesure.</p>
+          </div>
+          <div class="overview-card glass">
+            <div class="overview-icon">🎯</div>
+            <h3>Quêtes</h3>
+            <p>Des missions simples te donnent un cadre de progression clair.</p>
+          </div>
+          <div class="overview-card glass">
+            <div class="overview-icon">🎁</div>
+            <h3>Récompenses</h3>
+            <p>Badges, animations et déblocages rendent l’apprentissage plus motivant.</p>
+          </div>
         </div>
-        <div class="overview-card glass">
-          <div class="overview-icon">🎯</div>
-          <h3>Quêtes</h3>
-          <p>Des objectifs simples t’aident à savoir quoi faire ensuite.</p>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Parcours</div>
+            <h2>Comment progresser sur la plateforme</h2>
+          </div>
+          <p>
+            Un fonctionnement simple : comprendre, tester, consolider, débloquer.
+          </p>
         </div>
-        <div class="overview-card glass">
-          <div class="overview-icon">🎁</div>
-          <h3>Récompenses</h3>
-          <p>Des badges et récompenses se débloquent à mesure que tu progresses.</p>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-card glass">
+            <span class="roadmap-step">1</span>
+            <h3>Lire une leçon</h3>
+            <p>Découvre une notion avec explication, exemple simple, visuel et idée-clé à retenir.</p>
+          </div>
+          <div class="roadmap-card glass">
+            <span class="roadmap-step">2</span>
+            <h3>Faire un QCM</h3>
+            <p>Teste immédiatement ta compréhension pour ancrer les notions.</p>
+          </div>
+          <div class="roadmap-card glass">
+            <span class="roadmap-step">3</span>
+            <h3>Revoir si besoin</h3>
+            <p>En cas d’erreur, le site te renvoie vers la bonne leçon pour corriger rapidement.</p>
+          </div>
+          <div class="roadmap-card glass">
+            <span class="roadmap-step">4</span>
+            <h3>Débloquer des récompenses</h3>
+            <p>Tu gagnes des points, montes de niveau et récupères des badges.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -151,11 +203,10 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Les leçons</div>
-            <h2>Cours illustrés et faciles à retenir</h2>
+            <h2>Cours illustrés et plus approfondis</h2>
           </div>
           <p>
-            Finance, économie et business : des contenus courts, clairs
-            et visuels pour apprendre vite.
+            Finance, économie et business : des leçons plus complètes, mais toujours claires et digestes.
           </p>
         </div>
 
@@ -178,8 +229,7 @@
             <h2>Teste tes connaissances</h2>
           </div>
           <p>
-            Chaque bonne réponse te rapporte des points. La progression est sauvegardée
-            dans ton navigateur.
+            Si tu te trompes, la mauvaise réponse apparaît en rouge et tu peux revenir directement à la leçon liée.
           </p>
         </div>
 
@@ -208,10 +258,57 @@
             <div class="section-kicker">Récompenses</div>
             <h2>Badges et niveaux débloqués</h2>
           </div>
-          <p>Plus tu apprends, plus tu débloques d’éléments.</p>
+          <p>Plus tu progresses, plus ton profil se renforce.</p>
         </div>
 
         <div id="rewardsGrid" class="rewards-grid"></div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">À propos</div>
+            <h2>Le projet derrière Mind & Markets</h2>
+          </div>
+          <p>
+            Une plateforme portée par une étudiante en école de commerce qui veut apprendre, structurer et transmettre clairement.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass">
+            <div class="about-avatar">RB</div>
+            <div>
+              <h3>Roxane Brousmiche</h3>
+              <p class="about-role">Étudiante à l’ESSCA</p>
+              <p class="about-text">
+                Mind & Markets est né d’une idée simple : transformer un apprentissage personnel
+                en ressource utile pour d’autres étudiants et débutants, avec une approche plus claire,
+                plus visuelle et plus motivante.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-card glass">
+            <h3>Positionnement</h3>
+            <ul class="about-list">
+              <li>Étudiante en école de commerce</li>
+              <li>Approche pédagogique et concrète</li>
+              <li>Intérêt pour business, finance et marchés</li>
+              <li>Projet digital à forte valeur portfolio / LinkedIn</li>
+            </ul>
+          </div>
+
+          <div class="about-card glass">
+            <h3>Objectif du site</h3>
+            <p class="about-text">
+              Aider à comprendre les notions de base sans jargon, créer une vraie progression
+              et donner envie d’apprendre grâce à une expérience plus interactive qu’un simple blog.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -222,8 +319,8 @@
             <div class="section-kicker">Mind & Markets</div>
             <h2>Un site beau, utile et motivant à partager dans ta bio</h2>
             <p>
-              Tu peux ensuite l’enrichir avec de nouvelles leçons, de nouveaux quiz
-              et encore plus de récompenses.
+              Tu peux ensuite l’enrichir avec encore plus de leçons, des niveaux supplémentaires
+              et une vraie personnalisation de ton profil.
             </p>
           </div>
           <div class="cta-actions">
@@ -245,13 +342,24 @@
       </div>
       <div class="footer-links">
         <a href="#home">Accueil</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#lessons">Leçons</a>
         <a href="#quiz">Quiz</a>
-        <a href="#quests">Quêtes</a>
-        <a href="#rewards">Récompenses</a>
+        <a href="#about">À propos</a>
       </div>
     </div>
   </footer>
+
+  <div id="rewardOverlay" class="reward-overlay hidden">
+    <div class="reward-overlay-content">
+      <div class="reward-burst"></div>
+      <div class="reward-icon-big" id="rewardOverlayIcon">🏆</div>
+      <p class="reward-overlay-kicker">Récompense débloquée</p>
+      <h2 id="rewardOverlayTitle">Bravo</h2>
+      <p id="rewardOverlayText">Tu viens de débloquer une récompense.</p>
+      <button id="closeRewardOverlay" class="btn btn-primary">Continuer</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
