@@ -1,7 +1,6 @@
 :root {
   --bg: #07111f;
   --panel: #0d1727;
-  --panel-2: #121e31;
   --text: #ffffff;
   --muted: #9fb0c8;
   --green: #34d399;
@@ -12,9 +11,6 @@
   --red: #f87171;
   --border: rgba(255, 255, 255, 0.1);
   --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 18px;
   --max: 1220px;
 }
 
@@ -154,7 +150,8 @@ button {
 
 .nav-btn,
 .btn,
-.ghost-btn {
+.ghost-btn,
+.overlay-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -163,17 +160,20 @@ button {
   font-weight: 700;
   border: 1px solid transparent;
   transition: 0.2s ease;
+  cursor: pointer;
 }
 
 .nav-btn,
-.btn-primary {
+.btn-primary,
+.overlay-btn.primary {
   background: linear-gradient(135deg, var(--green), var(--green-2));
   color: #06111b;
   box-shadow: 0 18px 36px rgba(16, 185, 129, 0.25);
 }
 
 .btn-secondary,
-.ghost-btn {
+.ghost-btn,
+.overlay-btn {
   background: rgba(255, 255, 255, 0.05);
   color: white;
   border-color: var(--border);
@@ -181,7 +181,8 @@ button {
 
 .nav-btn:hover,
 .btn:hover,
-.ghost-btn:hover {
+.ghost-btn:hover,
+.overlay-btn:hover {
   transform: translateY(-1px);
 }
 
@@ -283,7 +284,7 @@ button {
 }
 
 .hero-panel {
-  border-radius: var(--radius-xl);
+  border-radius: 32px;
   padding: 18px;
 }
 
@@ -565,11 +566,7 @@ button {
 .gradient-green { background: linear-gradient(135deg, #34d399, #10b981); }
 .gradient-orange { background: linear-gradient(135deg, #fb923c, #fbbf24); }
 .gradient-cyan { background: linear-gradient(135deg, #22d3ee, #60a5fa); }
-.gradient-pink { background: linear-gradient(135deg, #ec4899, #f472b6); }
 .gradient-violet { background: linear-gradient(135deg, #8b5cf6, #c084fc); }
-.gradient-rose { background: linear-gradient(135deg, #f43f5e, #fb7185); }
-.gradient-lime { background: linear-gradient(135deg, #facc15, #a3e635); }
-.gradient-indigo { background: linear-gradient(135deg, #3b82f6, #818cf8); }
 
 .badge-soft,
 .badge-level,
@@ -702,8 +699,7 @@ button {
 .quiz-option,
 .claim-btn,
 .reset-btn,
-.lesson-link-btn,
-.overlay-btn {
+.lesson-link-btn {
   border-radius: 16px;
   border: 1px solid var(--border);
   cursor: pointer;
@@ -713,16 +709,14 @@ button {
 .validate-btn,
 .claim-btn,
 .reset-btn,
-.lesson-link-btn,
-.overlay-btn {
+.lesson-link-btn {
   padding: 11px 14px;
   background: rgba(255, 255, 255, 0.05);
   color: white;
 }
 
 .validate-btn.done,
-.claim-btn.done,
-.overlay-btn.primary {
+.claim-btn.done {
   background: linear-gradient(135deg, var(--green), var(--green-2));
   color: #07111f;
   border-color: transparent;
@@ -921,6 +915,12 @@ button {
   color: white;
 }
 
+.section-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
 /* FULLSCREEN MODALS */
 .fullscreen-modal {
   position: fixed;
@@ -963,7 +963,8 @@ button {
 }
 
 .onboarding-card h1,
-.result-card h2 {
+.result-card h2,
+.rating-card h2 {
   margin: 12px 0 0;
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
@@ -1013,6 +1014,29 @@ button {
 
 .result-emoji {
   font-size: 4rem;
+}
+
+.star-row {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.star-btn {
+  font-size: 2.4rem;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.star-btn:hover,
+.star-btn.active {
+  color: var(--yellow);
+  transform: scale(1.06);
 }
 
 @keyframes zoomIn {
@@ -1110,5 +1134,13 @@ svg {
 
   .fullscreen-card {
     padding: 28px 18px;
+  }
+
+  .star-row {
+    gap: 6px;
+  }
+
+  .star-btn {
+    font-size: 2rem;
   }
 }
