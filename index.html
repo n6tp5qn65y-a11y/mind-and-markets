@@ -22,76 +22,82 @@
   <div class="bg-glow glow-3"></div>
 
   <!-- ONBOARDING -->
-  <div id="onboardingOverlay" class="fullscreen-modal visible">
-    <div class="fullscreen-card onboarding-card">
-      <div class="logo-hero">
-        <svg viewBox="0 0 240 240" class="logo-svg" aria-hidden="true">
+  <div id="onboardingOverlay" class="overlay visible">
+    <div class="overlay-card onboarding-card">
+      <div class="logo-wrap">
+        <svg viewBox="0 0 220 220" class="logo-svg" aria-hidden="true">
           <defs>
             <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#34d399" />
-              <stop offset="55%" stop-color="#8b5cf6" />
+              <stop offset="50%" stop-color="#8b5cf6" />
               <stop offset="100%" stop-color="#ec4899" />
             </linearGradient>
           </defs>
-          <rect x="20" y="20" width="200" height="200" rx="54" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" />
-          <path d="M58 154 L94 98 L126 130 L178 76" fill="none" stroke="url(#logoGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="178" cy="76" r="10" fill="#34d399" />
-          <path d="M64 70 C90 46, 126 46, 152 70" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="8" stroke-linecap="round"/>
-          <text x="120" y="194" text-anchor="middle" fill="white" font-size="46" font-weight="900">M&M</text>
+          <rect x="16" y="16" width="188" height="188" rx="42" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" />
+          <path d="M50 142 L84 96 L114 122 L164 72" fill="none" stroke="url(#logoGrad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="164" cy="72" r="9" fill="#34d399"/>
+          <text x="110" y="180" text-anchor="middle" fill="white" font-size="40" font-weight="900">M&M</text>
         </svg>
       </div>
-
-      <p class="overlay-kicker">Bienvenue sur Mind & Markets</p>
+      <p class="mini-kicker">Bienvenue</p>
       <h1>Choisis ton niveau</h1>
       <p class="overlay-text">
-        Pour te proposer les bonnes leçons, les bons QCM et les bonnes quêtes,
-        sélectionne ton niveau actuel en business et marchés financiers.
+        On personnalise ton parcours pour te proposer les bonnes leçons, les bons QCM
+        et les bonnes quêtes, sans te noyer sous trop de contenu.
       </p>
 
       <div class="level-choice-grid">
-        <button class="level-choice" data-level-choice="debutant">
-          <span class="level-choice-emoji">🌱</span>
+        <button class="level-choice" data-track="debutant">
+          <span class="level-emoji">🌱</span>
           <strong>Débutant</strong>
-          <span>Tu veux des bases très claires, rassurantes et progressives.</span>
+          <span>Tu veux apprendre les bases simplement.</span>
         </button>
 
-        <button class="level-choice" data-level-choice="intermediaire">
-          <span class="level-choice-emoji">📈</span>
+        <button class="level-choice" data-track="intermediaire">
+          <span class="level-emoji">📈</span>
           <strong>Intermédiaire</strong>
-          <span>Tu connais déjà les fondamentaux et tu veux aller plus loin.</span>
+          <span>Tu connais les bases et tu veux approfondir.</span>
         </button>
 
-        <button class="level-choice" data-level-choice="professionnel">
-          <span class="level-choice-emoji">🧠</span>
+        <button class="level-choice" data-track="professionnel">
+          <span class="level-emoji">🧠</span>
           <strong>Professionnel</strong>
-          <span>Tu veux des formats plus analytiques, des cas, des articles et des références.</span>
+          <span>Tu veux des analyses plus construites et plus stratégiques.</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- RESULT / FEEDBACK OVERLAY -->
-  <div id="resultOverlay" class="fullscreen-modal">
-    <div class="fullscreen-card result-card">
-      <div id="resultOverlayEmoji" class="result-emoji">🏆</div>
-      <p id="resultOverlayKicker" class="overlay-kicker">Récompense débloquée</p>
-      <h2 id="resultOverlayTitle">Bravo</h2>
-      <p id="resultOverlayText" class="overlay-text">Tu progresses très bien.</p>
-      <div id="resultOverlayActions" class="overlay-actions"></div>
+  <!-- FEEDBACK OVERLAY -->
+  <div id="feedbackOverlay" class="overlay">
+    <div class="overlay-card feedback-card">
+      <div id="feedbackEmoji" class="feedback-emoji">🏆</div>
+      <p id="feedbackKicker" class="mini-kicker">Bravo</p>
+      <h2 id="feedbackTitle">Tu progresses</h2>
+      <p id="feedbackText" class="overlay-text">Continue comme ça.</p>
+      <div id="feedbackActions" class="overlay-actions"></div>
     </div>
   </div>
 
-  <!-- RATING AFTER 3 MIN -->
-  <div id="ratingOverlay" class="fullscreen-modal">
-    <div class="fullscreen-card rating-card">
-      <div class="result-emoji">⭐</div>
-      <p class="overlay-kicker">Ton avis compte</p>
+  <!-- LESSON MODAL -->
+  <div id="lessonModal" class="overlay">
+    <div class="lesson-modal-card">
+      <button id="closeLessonModal" class="modal-close" aria-label="Fermer">✕</button>
+      <div id="lessonModalContent"></div>
+    </div>
+  </div>
+
+  <!-- RATING OVERLAY -->
+  <div id="ratingOverlay" class="overlay">
+    <div class="overlay-card rating-card">
+      <div class="feedback-emoji">⭐</div>
+      <p class="mini-kicker">Ton avis compte</p>
       <h2>Comment trouves-tu la plateforme ?</h2>
       <p class="overlay-text">
         Cela nous aide à améliorer l’expérience et à rendre les leçons encore plus utiles.
       </p>
 
-      <div class="star-row" id="starRow">
+      <div class="stars" id="stars">
         <button class="star-btn" data-rating="1">★</button>
         <button class="star-btn" data-rating="2">★</button>
         <button class="star-btn" data-rating="3">★</button>
@@ -100,10 +106,13 @@
       </div>
 
       <div class="overlay-actions">
-        <button id="closeRatingBtn" class="overlay-btn">Plus tard</button>
+        <button id="closeRatingOverlay" class="ghost-btn">Plus tard</button>
       </div>
     </div>
   </div>
+
+  <!-- TOASTS -->
+  <div id="toastContainer" class="toast-container"></div>
 
   <header class="site-header">
     <div class="container nav">
@@ -111,14 +120,14 @@
         <div class="brand-mark">
           <svg viewBox="0 0 120 120" aria-hidden="true">
             <defs>
-              <linearGradient id="markGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#34d399"/>
-                <stop offset="55%" stop-color="#8b5cf6"/>
+                <stop offset="50%" stop-color="#8b5cf6"/>
                 <stop offset="100%" stop-color="#ec4899"/>
               </linearGradient>
             </defs>
-            <rect x="8" y="8" width="104" height="104" rx="26" fill="rgba(255,255,255,0.08)" />
-            <path d="M24 78 L44 52 L64 66 L92 34" fill="none" stroke="url(#markGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="8" width="104" height="104" rx="24" fill="rgba(255,255,255,0.08)" />
+            <path d="M24 78 L44 52 L64 66 L92 34" fill="none" stroke="url(#brandGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="92" cy="34" r="5" fill="#34d399"/>
           </svg>
         </div>
@@ -139,7 +148,7 @@
 
       <div class="nav-actions">
         <button id="changeTrackBtn" class="ghost-btn">Changer de niveau</button>
-        <a class="nav-btn" href="#quiz">Commencer</a>
+        <a href="#lessons" class="nav-btn">Commencer</a>
       </div>
     </div>
   </header>
@@ -150,16 +159,16 @@
         <div>
           <div class="pill">Plateforme premium • business • finance • marchés</div>
           <h1>
-            Apprends les marchés et le business
-            <span>comme dans un jeu intelligent</span>
+            Apprends le business et les marchés
+            <span>de manière claire et ludique</span>
           </h1>
           <p class="hero-text">
-            Des leçons illustrées, des QCM adaptatifs, des quêtes débloquées selon ton niveau,
-            un système d’XP, 50 niveaux et une progression premium pensée pour durer.
+            Un parcours structuré, des vraies leçons, des QCM interactifs, des quêtes,
+            des niveaux et des récompenses — sans surcharge visuelle.
           </p>
 
           <div class="hero-actions">
-            <a href="#lessons" class="btn btn-primary">Explorer les leçons</a>
+            <a href="#lessons" class="btn btn-primary">Voir les leçons</a>
             <a href="#quiz" class="btn btn-secondary">Faire un QCM</a>
           </div>
 
@@ -186,16 +195,16 @@
         <div class="hero-panel glass">
           <div class="hero-panel-top">
             <div>
-              <div class="mini-label">Recommandation du moment</div>
+              <div class="mini-kicker">Parcours actuel</div>
               <h2 id="heroRecommendationTitle">Choisis ton niveau</h2>
             </div>
-            <div class="mini-badge" id="heroTrackBadge">Personnalisé</div>
+            <div id="heroTrackBadge" class="mini-badge">Personnalisé</div>
           </div>
 
           <div class="hero-highlight">
-            <div class="hero-highlight-title">Principe du site</div>
+            <div class="hero-highlight-title">Esprit du site</div>
             <p id="heroRecommendationText">
-              Commence par choisir ton niveau, puis découvre un parcours qui s’adapte à toi.
+              Des contenus utiles, progressifs et structurés pour vraiment apprendre quelque chose.
             </p>
           </div>
 
@@ -227,12 +236,12 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Dashboard</div>
+            <div class="mini-kicker">Dashboard</div>
             <h2>Ton cockpit d’apprentissage</h2>
           </div>
           <p>
-            Une expérience inspirée des meilleures plateformes éducatives :
-            progression visible, parcours clair, feedback immédiat et contenu structuré.
+            Un espace clair pour savoir où tu en es, ce qui est débloqué,
+            et ce que tu peux faire ensuite.
           </p>
         </div>
 
@@ -240,57 +249,22 @@
           <div class="overview-card glass">
             <div class="overview-icon">🧭</div>
             <h3>Parcours guidé</h3>
-            <p>Le contenu affiché s’adapte à ton niveau choisi.</p>
+            <p>Le contenu affiché s’adapte à ton niveau choisi et à ta progression.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">🎯</div>
-            <h3>QCM intelligents</h3>
-            <p>Chaque QCM est lié à une leçon précise, pour réviser immédiatement la bonne notion.</p>
+            <h3>QCM liés aux leçons</h3>
+            <p>Chaque QCM est connecté à une notion précise pour réviser intelligemment.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">⚡</div>
             <h3>XP & niveaux</h3>
-            <p>Tu gagnes des points, montes de niveau et débloques des récompenses jusqu’au niveau 50.</p>
+            <p>Tu montes de niveau progressivement avec des récompenses visibles.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">🎁</div>
             <h3>Récompenses</h3>
-            <p>Chaque palier important ou quête terminée donne une vraie sensation de progression.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Parcours</div>
-            <h2>Comment fonctionne la plateforme</h2>
-          </div>
-          <p>Apprendre, tester, corriger, débloquer. Tout est pensé pour rester motivant.</p>
-        </div>
-
-        <div class="roadmap-grid">
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">1</span>
-            <h3>Choisir son niveau</h3>
-            <p>Débutant, intermédiaire ou professionnel : l’interface se personnalise dès l’entrée.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">2</span>
-            <h3>Lire une leçon</h3>
-            <p>Chaque leçon est structurée avec explication, visuel, points-clés et approfondissement.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">3</span>
-            <h3>Faire un QCM</h3>
-            <p>Le site valide ou corrige avec un feedback immédiat, clair et premium.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">4</span>
-            <h3>Monter de niveau</h3>
-            <p>Tu débloques progressivement des quêtes, des récompenses et des contenus plus riches.</p>
+            <p>Les gains apparaissent sans effort grâce à des notifications claires.</p>
           </div>
         </div>
       </div>
@@ -300,38 +274,23 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Leçons</div>
-            <h2>Bibliothèque intelligente</h2>
+            <div class="mini-kicker">Leçons</div>
+            <h2>Le parcours de ton niveau</h2>
           </div>
           <p>
-            150 leçons au total : 50 débutant, 50 intermédiaire, 50 professionnel.
+            Des modules progressifs, sans répétition, avec un vrai fil logique.
           </p>
         </div>
 
         <div class="control-row">
-          <div class="filter-row" id="lessonAudienceFilters">
-            <button class="filter-btn active" data-audience-filter="recommended">Recommandé</button>
-            <button class="filter-btn" data-audience-filter="debutant">Débutant</button>
-            <button class="filter-btn" data-audience-filter="intermediaire">Intermédiaire</button>
-            <button class="filter-btn" data-audience-filter="professionnel">Professionnel</button>
-            <button class="filter-btn" data-audience-filter="all">Tout voir</button>
-          </div>
-
-          <div class="filter-row" id="lessonCategoryFilters">
-            <button class="filter-btn active" data-category-filter="all">Toutes catégories</button>
-            <button class="filter-btn" data-category-filter="Marchés">Marchés</button>
-            <button class="filter-btn" data-category-filter="Macro">Macro</button>
-            <button class="filter-btn" data-category-filter="Business">Business</button>
-            <button class="filter-btn" data-category-filter="Investissement">Investissement</button>
+          <div class="filter-row">
+            <button id="recommendedLessonsBtn" class="filter-btn active">Parcours débloqué</button>
+            <button id="showAllLessonsBtn" class="filter-btn">Voir tout</button>
           </div>
         </div>
 
         <div id="recommendedStrip" class="recommended-strip"></div>
         <div id="lessonsGrid" class="cards-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreLessonsBtn" class="ghost-btn">Afficher plus de leçons</button>
-        </div>
       </div>
     </section>
 
@@ -339,27 +298,22 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">QCM</div>
-            <h2>Entraînement adaptatif</h2>
+            <div class="mini-kicker">QCM</div>
+            <h2>Entraînement interactif</h2>
           </div>
           <p>
-            150 QCM liés aux leçons, avec correction immédiate et retour vers la bonne notion en cas d’erreur.
+            Des questions sans répétition, progressives et liées aux leçons déjà vues.
           </p>
         </div>
 
-        <div class="filter-row" id="quizAudienceFilters">
-          <button class="filter-btn active" data-quiz-filter="recommended">Recommandés</button>
-          <button class="filter-btn" data-quiz-filter="debutant">Débutant</button>
-          <button class="filter-btn" data-quiz-filter="intermediaire">Intermédiaire</button>
-          <button class="filter-btn" data-quiz-filter="professionnel">Professionnel</button>
-          <button class="filter-btn" data-quiz-filter="all">Tout voir</button>
+        <div class="control-row">
+          <div class="filter-row">
+            <button id="recommendedQuizBtn" class="filter-btn active">QCM débloqués</button>
+            <button id="showAllQuizBtn" class="filter-btn">Voir tout</button>
+          </div>
         </div>
 
         <div id="quizGrid" class="quiz-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreQuizzesBtn" class="ghost-btn">Afficher plus de QCM</button>
-        </div>
       </div>
     </section>
 
@@ -367,19 +321,22 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Quêtes</div>
-            <h2>50 missions progressives</h2>
+            <div class="mini-kicker">Quêtes</div>
+            <h2>Objectifs progressifs</h2>
           </div>
           <p>
-            Certaines quêtes ne se débloquent que lorsque tu as lu des leçons précises ou atteint certains niveaux.
+            Des objectifs simples et lisibles, pensés pour motiver sans surcharger.
           </p>
         </div>
 
-        <div id="questsGrid" class="quests-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreQuestsBtn" class="ghost-btn">Afficher plus de quêtes</button>
+        <div class="control-row">
+          <div class="filter-row">
+            <button id="recommendedQuestBtn" class="filter-btn active">Quêtes ouvertes</button>
+            <button id="showAllQuestBtn" class="filter-btn">Voir tout</button>
+          </div>
         </div>
+
+        <div id="questsGrid" class="quests-grid"></div>
       </div>
     </section>
 
@@ -387,17 +344,22 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Récompenses</div>
-            <h2>50 niveaux • badges • déblocages</h2>
+            <div class="mini-kicker">Récompenses</div>
+            <h2>Niveaux et déblocages</h2>
           </div>
-          <p>Une progression longue, visuelle et motivante, pensée pour un vrai projet premium.</p>
+          <p>
+            Une progression visible, simple à comprendre, qui donne envie de continuer.
+          </p>
+        </div>
+
+        <div class="control-row">
+          <div class="filter-row">
+            <button id="recommendedRewardBtn" class="filter-btn active">Débloqués + proches</button>
+            <button id="showAllRewardBtn" class="filter-btn">Voir tout</button>
+          </div>
         </div>
 
         <div id="rewardsGrid" class="rewards-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreRewardsBtn" class="ghost-btn">Afficher plus de niveaux</button>
-        </div>
       </div>
     </section>
 
@@ -405,11 +367,11 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="section-kicker">À propos</div>
+            <div class="mini-kicker">À propos</div>
             <h2>Le projet d’Amine Rachoui</h2>
           </div>
           <p>
-            Une plateforme portée par un étudiant en école de commerce, passionné par la finance, les marchés et l’apprentissage structuré.
+            Un projet personnel pensé pour apprendre, structurer et transmettre plus clairement.
           </p>
         </div>
 
@@ -419,29 +381,28 @@
             <h3>Amine Rachoui</h3>
             <p class="about-role">Programme Grande École • ESSCA</p>
             <p class="about-text">
-              Mind & Markets est conçu comme un projet à la fois pédagogique et ambitieux :
-              apprendre plus vite, mieux structurer ses connaissances, et proposer une vraie
-              expérience digitale inspirée des meilleures plateformes éducatives.
+              Mind & Markets a été conçu comme une plateforme pédagogique premium :
+              claire, structurée, visuelle et suffisamment ambitieuse pour être un vrai projet différenciant.
             </p>
           </div>
 
           <div class="about-card glass">
             <h3>Profil</h3>
             <ul class="about-list">
-              <li>Étudiant à l’ESSCA en Programme Grande École</li>
-              <li>Curiosité économique et financière marquée</li>
-              <li>Suivi des marchés et intérêt pour l’investissement</li>
-              <li>Analyse de portefeuille crypto depuis plusieurs années</li>
+              <li>Étudiant à l’ESSCA</li>
+              <li>Intérêt fort pour finance et marchés</li>
+              <li>Curiosité pour l’investissement</li>
+              <li>Volonté de rendre l’apprentissage plus ludique</li>
             </ul>
           </div>
 
           <div class="about-card glass">
-            <h3>Expérience & discipline</h3>
+            <h3>Objectif du site</h3>
             <ul class="about-list">
-              <li>Stage de découverte chez Merck</li>
-              <li>Observation de structures industrielles et gestion de projet</li>
-              <li>Natation en compétition depuis de nombreuses années</li>
-              <li>Rigueur, autonomie, gestion du stress et persévérance</li>
+              <li>Expliquer simplement des notions utiles</li>
+              <li>Créer un vrai fil logique de progression</li>
+              <li>Donner envie d’apprendre davantage</li>
+              <li>Construire un projet fort à partager sur LinkedIn</li>
             </ul>
           </div>
         </div>
@@ -452,10 +413,10 @@
       <div class="container">
         <div class="final-cta glass">
           <div>
-            <div class="section-kicker">Mind & Markets</div>
-            <h2>Une plateforme carrée, premium et partageable sur LinkedIn</h2>
+            <div class="mini-kicker">Mind & Markets</div>
+            <h2>Une plateforme claire, légère et premium</h2>
             <p>
-              Le site est pensé pour être visuellement fort, crédible, interactif et différenciant.
+              L’objectif est simple : avoir envie d’y rester, comprendre vite, progresser vraiment.
             </p>
           </div>
           <div class="cta-actions">
