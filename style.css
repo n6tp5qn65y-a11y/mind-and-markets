@@ -10,6 +10,7 @@
   --violet: #8b5cf6;
   --pink: #ec4899;
   --yellow: #fbbf24;
+  --red: #f87171;
   --border: rgba(255, 255, 255, 0.10);
   --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
   --radius-xl: 32px;
@@ -396,13 +397,17 @@ button {
   padding: 34px 0 26px;
 }
 
-.overview-grid {
+.overview-grid,
+.roadmap-grid,
+.about-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 
-.overview-card {
+.overview-card,
+.roadmap-card,
+.about-card {
   border-radius: 28px;
   padding: 24px;
 }
@@ -411,15 +416,30 @@ button {
   font-size: 1.5rem;
 }
 
-.overview-card h3 {
+.overview-card h3,
+.roadmap-card h3,
+.about-card h3 {
   margin: 14px 0 10px;
   font-size: 1.25rem;
 }
 
-.overview-card p {
+.overview-card p,
+.roadmap-card p,
+.about-text {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.roadmap-step {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--green), var(--green-2));
+  color: #07111f;
+  font-weight: 800;
 }
 
 .section-head {
@@ -491,6 +511,11 @@ button {
   box-shadow: var(--shadow);
 }
 
+.lesson-card.flash-target {
+  outline: 2px solid rgba(52, 211, 153, 0.8);
+  box-shadow: 0 0 0 8px rgba(52, 211, 153, 0.12);
+}
+
 .lesson-top {
   display: flex;
   align-items: center;
@@ -557,6 +582,22 @@ button {
   line-height: 1.7;
 }
 
+.lesson-detail-title {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #d9f6ea;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.lesson-detail-text {
+  margin-top: 8px;
+  color: #dbe7f7;
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
 .chart-box {
   margin-top: 16px;
   border-radius: 26px;
@@ -620,12 +661,14 @@ button {
   justify-content: space-between;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .validate-btn,
 .quiz-option,
 .claim-btn,
-.reset-btn {
+.reset-btn,
+.lesson-link-btn {
   border-radius: 16px;
   border: 1px solid var(--border);
   cursor: pointer;
@@ -634,7 +677,8 @@ button {
 
 .validate-btn,
 .claim-btn,
-.reset-btn {
+.reset-btn,
+.lesson-link-btn {
   padding: 11px 14px;
   background: rgba(255, 255, 255, 0.05);
   color: white;
@@ -684,8 +728,8 @@ button {
 }
 
 .quiz-option.wrong {
-  background: rgba(248, 113, 113, 0.12);
-  border-color: rgba(248, 113, 113, 0.26);
+  background: rgba(248, 113, 113, 0.16);
+  border-color: rgba(248, 113, 113, 0.36);
   color: #ffd5d5;
 }
 
@@ -704,6 +748,13 @@ button {
 .quiz-feedback.bad {
   background: rgba(248, 113, 113, 0.12);
   border-color: rgba(248, 113, 113, 0.25);
+}
+
+.quiz-feedback-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .quest-status {
@@ -733,6 +784,36 @@ button {
 .reward-card.unlocked .reward-icon {
   background: linear-gradient(135deg, var(--green), var(--green-2));
   color: #07111f;
+}
+
+.about-grid {
+  grid-template-columns: 1.2fr 1fr 1fr;
+}
+
+.about-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--green), var(--violet));
+  color: #07111f;
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.about-role {
+  color: #99f6cf;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+
+.about-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #dbe7f7;
+  line-height: 1.8;
 }
 
 .final-cta {
@@ -797,24 +878,123 @@ button {
   color: white;
 }
 
+.reward-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(4, 10, 18, 0.88);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.reward-overlay.hidden {
+  display: none;
+}
+
+.reward-overlay-content {
+  position: relative;
+  width: min(720px, 100%);
+  border-radius: 34px;
+  padding: 46px 28px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(139,92,246,0.16), rgba(236,72,153,0.14));
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  overflow: hidden;
+  animation: zoomIn 0.35s ease;
+}
+
+.reward-burst {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.18) 2px, transparent 3px) 0 0/40px 40px,
+    radial-gradient(circle, rgba(52,211,153,0.25) 2px, transparent 3px) 20px 20px/48px 48px;
+  animation: floatBurst 10s linear infinite;
+  opacity: 0.65;
+}
+
+.reward-icon-big {
+  position: relative;
+  z-index: 1;
+  font-size: 4rem;
+}
+
+.reward-overlay-kicker {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 0;
+  color: #b7f7dd;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.reward-overlay-content h2 {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+.reward-overlay-content p {
+  position: relative;
+  z-index: 1;
+  margin: 14px auto 0;
+  max-width: 520px;
+  color: #eef4fc;
+  line-height: 1.8;
+}
+
+.reward-overlay-content .btn {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+}
+
 svg {
   display: block;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatBurst {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-20px) rotate(8deg);
+  }
 }
 
 @media (max-width: 1100px) {
   .hero-grid,
   .overview-grid,
+  .roadmap-grid,
   .cards-grid,
   .quests-grid,
   .rewards-grid,
   .quiz-grid,
   .stats-grid,
-  .final-cta {
+  .about-grid {
     grid-template-columns: 1fr;
   }
 
   .section-head,
-  .footer-row {
+  .footer-row,
+  .final-cta {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -846,7 +1026,9 @@ svg {
   .quiz-card,
   .quest-card,
   .reward-card,
-  .overview-card {
+  .overview-card,
+  .roadmap-card,
+  .about-card {
     padding: 18px;
   }
 }
@@ -866,7 +1048,12 @@ svg {
   }
 
   .hero-actions,
-  .cta-actions {
+  .cta-actions,
+  .quiz-feedback-actions {
     flex-direction: column;
+  }
+
+  .reward-overlay-content {
+    padding: 34px 20px;
   }
 }
