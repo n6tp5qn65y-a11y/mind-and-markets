@@ -6,7 +6,7 @@
   <title>Mind & Markets</title>
   <meta
     name="description"
-    content="Mind & Markets - plateforme ludique pour apprendre business, finance et marchés financiers."
+    content="Mind & Markets - plateforme ludique et premium pour apprendre business, finance et marchés financiers."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,32 +52,56 @@
         <button class="level-choice" data-level-choice="debutant">
           <span class="level-choice-emoji">🌱</span>
           <strong>Débutant</strong>
-          <span>Tu commences ou tu veux des bases ultra claires.</span>
+          <span>Tu veux des bases très claires, rassurantes et progressives.</span>
         </button>
 
         <button class="level-choice" data-level-choice="intermediaire">
           <span class="level-choice-emoji">📈</span>
           <strong>Intermédiaire</strong>
-          <span>Tu connais déjà les bases et tu veux approfondir.</span>
+          <span>Tu connais déjà les fondamentaux et tu veux aller plus loin.</span>
         </button>
 
         <button class="level-choice" data-level-choice="professionnel">
           <span class="level-choice-emoji">🧠</span>
           <strong>Professionnel</strong>
-          <span>Tu veux des contenus plus avancés, analyses, interviews et cas.</span>
+          <span>Tu veux des formats plus analytiques, des cas, des articles et des références.</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- OVERLAY RESULT -->
+  <!-- RESULT / FEEDBACK OVERLAY -->
   <div id="resultOverlay" class="fullscreen-modal">
     <div class="fullscreen-card result-card">
       <div id="resultOverlayEmoji" class="result-emoji">🏆</div>
       <p id="resultOverlayKicker" class="overlay-kicker">Récompense débloquée</p>
       <h2 id="resultOverlayTitle">Bravo</h2>
-      <p id="resultOverlayText" class="overlay-text">Tu progresses super bien.</p>
+      <p id="resultOverlayText" class="overlay-text">Tu progresses très bien.</p>
       <div id="resultOverlayActions" class="overlay-actions"></div>
+    </div>
+  </div>
+
+  <!-- RATING AFTER 3 MIN -->
+  <div id="ratingOverlay" class="fullscreen-modal">
+    <div class="fullscreen-card rating-card">
+      <div class="result-emoji">⭐</div>
+      <p class="overlay-kicker">Ton avis compte</p>
+      <h2>Comment trouves-tu la plateforme ?</h2>
+      <p class="overlay-text">
+        Cela nous aide à améliorer l’expérience et à rendre les leçons encore plus utiles.
+      </p>
+
+      <div class="star-row" id="starRow">
+        <button class="star-btn" data-rating="1">★</button>
+        <button class="star-btn" data-rating="2">★</button>
+        <button class="star-btn" data-rating="3">★</button>
+        <button class="star-btn" data-rating="4">★</button>
+        <button class="star-btn" data-rating="5">★</button>
+      </div>
+
+      <div class="overlay-actions">
+        <button id="closeRatingBtn" class="overlay-btn">Plus tard</button>
+      </div>
     </div>
   </div>
 
@@ -124,14 +148,14 @@
     <section id="home" class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="pill">Plateforme d’apprentissage business • finance • marchés</div>
+          <div class="pill">Plateforme premium • business • finance • marchés</div>
           <h1>
             Apprends les marchés et le business
-            <span>comme dans un jeu premium</span>
+            <span>comme dans un jeu intelligent</span>
           </h1>
           <p class="hero-text">
-            Des leçons illustrées, des QCM intelligents, des quêtes débloquées selon ton niveau,
-            un système d’XP, 50 niveaux et une progression personnalisée.
+            Des leçons illustrées, des QCM adaptatifs, des quêtes débloquées selon ton niveau,
+            un système d’XP, 50 niveaux et une progression premium pensée pour durer.
           </p>
 
           <div class="hero-actions">
@@ -162,7 +186,7 @@
         <div class="hero-panel glass">
           <div class="hero-panel-top">
             <div>
-              <div class="mini-label">Recommandation du jour</div>
+              <div class="mini-label">Recommandation du moment</div>
               <h2 id="heroRecommendationTitle">Choisis ton niveau</h2>
             </div>
             <div class="mini-badge" id="heroTrackBadge">Personnalisé</div>
@@ -187,12 +211,12 @@
 
           <div class="hero-mini-grid">
             <div class="mini-status-card">
-              <span>Leçons lues</span>
-              <strong id="lessonsStat">0</strong>
+              <span>Leçons validées</span>
+              <strong id="lessonsStatMini">0</strong>
             </div>
             <div class="mini-status-card">
               <span>QCM réussis</span>
-              <strong id="quizStat">0</strong>
+              <strong id="quizStatMini">0</strong>
             </div>
           </div>
         </div>
@@ -221,7 +245,7 @@
           <div class="overview-card glass">
             <div class="overview-icon">🎯</div>
             <h3>QCM intelligents</h3>
-            <p>Chaque QCM est lié à une leçon précise, pour revoir immédiatement la bonne notion.</p>
+            <p>Chaque QCM est lié à une leçon précise, pour réviser immédiatement la bonne notion.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">⚡</div>
@@ -231,7 +255,7 @@
           <div class="overview-card glass">
             <div class="overview-icon">🎁</div>
             <h3>Récompenses</h3>
-            <p>Chaque palier important ou quête débloquée donne une vraie sensation de progression.</p>
+            <p>Chaque palier important ou quête terminée donne une vraie sensation de progression.</p>
           </div>
         </div>
       </div>
@@ -261,12 +285,12 @@
           <div class="roadmap-card glass">
             <span class="roadmap-step">3</span>
             <h3>Faire un QCM</h3>
-            <p>Le site valide ou corrige avec un feedback immédiat et dirigé.</p>
+            <p>Le site valide ou corrige avec un feedback immédiat, clair et premium.</p>
           </div>
           <div class="roadmap-card glass">
             <span class="roadmap-step">4</span>
             <h3>Monter de niveau</h3>
-            <p>Tu débloques progressivement des quêtes et des récompenses plus ambitieuses.</p>
+            <p>Tu débloques progressivement des quêtes, des récompenses et des contenus plus riches.</p>
           </div>
         </div>
       </div>
@@ -286,10 +310,11 @@
 
         <div class="control-row">
           <div class="filter-row" id="lessonAudienceFilters">
-            <button class="filter-btn active" data-audience-filter="all">Tous</button>
+            <button class="filter-btn active" data-audience-filter="recommended">Recommandé</button>
             <button class="filter-btn" data-audience-filter="debutant">Débutant</button>
             <button class="filter-btn" data-audience-filter="intermediaire">Intermédiaire</button>
             <button class="filter-btn" data-audience-filter="professionnel">Professionnel</button>
+            <button class="filter-btn" data-audience-filter="all">Tout voir</button>
           </div>
 
           <div class="filter-row" id="lessonCategoryFilters">
@@ -303,6 +328,10 @@
 
         <div id="recommendedStrip" class="recommended-strip"></div>
         <div id="lessonsGrid" class="cards-grid"></div>
+
+        <div class="section-actions">
+          <button id="showMoreLessonsBtn" class="ghost-btn">Afficher plus de leçons</button>
+        </div>
       </div>
     </section>
 
@@ -323,9 +352,14 @@
           <button class="filter-btn" data-quiz-filter="debutant">Débutant</button>
           <button class="filter-btn" data-quiz-filter="intermediaire">Intermédiaire</button>
           <button class="filter-btn" data-quiz-filter="professionnel">Professionnel</button>
+          <button class="filter-btn" data-quiz-filter="all">Tout voir</button>
         </div>
 
         <div id="quizGrid" class="quiz-grid"></div>
+
+        <div class="section-actions">
+          <button id="showMoreQuizzesBtn" class="ghost-btn">Afficher plus de QCM</button>
+        </div>
       </div>
     </section>
 
@@ -342,6 +376,10 @@
         </div>
 
         <div id="questsGrid" class="quests-grid"></div>
+
+        <div class="section-actions">
+          <button id="showMoreQuestsBtn" class="ghost-btn">Afficher plus de quêtes</button>
+        </div>
       </div>
     </section>
 
@@ -356,6 +394,10 @@
         </div>
 
         <div id="rewardsGrid" class="rewards-grid"></div>
+
+        <div class="section-actions">
+          <button id="showMoreRewardsBtn" class="ghost-btn">Afficher plus de niveaux</button>
+        </div>
       </div>
     </section>
 
@@ -413,7 +455,7 @@
             <div class="section-kicker">Mind & Markets</div>
             <h2>Une plateforme carrée, premium et partageable sur LinkedIn</h2>
             <p>
-              Le site est pensé pour être à la fois visuellement fort, crédible, interactif et différenciant.
+              Le site est pensé pour être visuellement fort, crédible, interactif et différenciant.
             </p>
           </div>
           <div class="cta-actions">
