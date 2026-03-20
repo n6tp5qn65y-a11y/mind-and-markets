@@ -6,7 +6,7 @@
   <title>Mind & Markets</title>
   <meta
     name="description"
-    content="Mind & Markets - plateforme ludique et premium pour apprendre business, finance et marchés financiers."
+    content="Mind & Markets - plateforme premium et ludique pour apprendre les marchés financiers et le business."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,50 +45,101 @@
       <h1>Choisis ton niveau</h1>
       <p class="overlay-text">
         Pour te proposer les bonnes leçons, les bons QCM et les bonnes quêtes,
-        sélectionne ton niveau actuel en business et marchés financiers.
+        sélectionne ton niveau actuel.
       </p>
 
       <div class="level-choice-grid">
         <button class="level-choice" data-level-choice="debutant">
           <span class="level-choice-emoji">🌱</span>
           <strong>Débutant</strong>
-          <span>Tu veux des bases très claires, rassurantes et progressives.</span>
+          <span>Des bases simples, structurées, sans jargon inutile.</span>
         </button>
 
         <button class="level-choice" data-level-choice="intermediaire">
           <span class="level-choice-emoji">📈</span>
           <strong>Intermédiaire</strong>
-          <span>Tu connais déjà les fondamentaux et tu veux aller plus loin.</span>
+          <span>Plus d’analyse, plus de logique de marché et de stratégie.</span>
         </button>
 
         <button class="level-choice" data-level-choice="professionnel">
           <span class="level-choice-emoji">🧠</span>
           <strong>Professionnel</strong>
-          <span>Tu veux des formats plus analytiques, des cas, des articles et des références.</span>
+          <span>Formats plus complets : analyses, cas, angles macro et références.</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- RESULT / FEEDBACK OVERLAY -->
+  <!-- RESULT OVERLAY -->
   <div id="resultOverlay" class="fullscreen-modal">
     <div class="fullscreen-card result-card">
       <div id="resultOverlayEmoji" class="result-emoji">🏆</div>
-      <p id="resultOverlayKicker" class="overlay-kicker">Récompense débloquée</p>
-      <h2 id="resultOverlayTitle">Bravo</h2>
+      <p id="resultOverlayKicker" class="overlay-kicker">Bravo</p>
+      <h2 id="resultOverlayTitle">Nouveau palier atteint</h2>
       <p id="resultOverlayText" class="overlay-text">Tu progresses très bien.</p>
       <div id="resultOverlayActions" class="overlay-actions"></div>
     </div>
   </div>
 
-  <!-- RATING AFTER 3 MIN -->
+  <!-- LONG LESSON MODAL -->
+  <div id="lessonModal" class="fullscreen-modal">
+    <div class="lesson-modal-card">
+      <div class="lesson-modal-top">
+        <div>
+          <p id="lessonModalKicker" class="overlay-kicker">Leçon détaillée</p>
+          <h2 id="lessonModalTitle">Titre</h2>
+        </div>
+        <button id="closeLessonModal" class="ghost-btn">Fermer</button>
+      </div>
+
+      <div class="lesson-modal-content">
+        <div class="lesson-modal-meta">
+          <span id="lessonModalTrack" class="badge-mini">Débutant</span>
+          <span id="lessonModalCategory" class="badge-mini">Marchés</span>
+          <span id="lessonModalFormat" class="badge-mini">Leçon</span>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Problématique</h3>
+          <p id="lessonModalProblem"></p>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Introduction</h3>
+          <p id="lessonModalIntro"></p>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Plan</h3>
+          <ol id="lessonModalPlan"></ol>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Développement</h3>
+          <div id="lessonModalBody"></div>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Conclusion</h3>
+          <p id="lessonModalConclusion"></p>
+        </div>
+
+        <div class="lesson-modal-block">
+          <h3>Question d’actualité</h3>
+          <p id="lessonModalCurrentQuestion"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 MIN RATING -->
   <div id="ratingOverlay" class="fullscreen-modal">
     <div class="fullscreen-card rating-card">
       <div class="result-emoji">⭐</div>
       <p class="overlay-kicker">Ton avis compte</p>
       <h2>Comment trouves-tu la plateforme ?</h2>
       <p class="overlay-text">
-        Cela nous aide à améliorer l’expérience et à rendre les leçons encore plus utiles.
+        Cela nous aide à rendre l’expérience encore plus claire et agréable.
       </p>
 
       <div class="star-row" id="starRow">
@@ -104,6 +155,9 @@
       </div>
     </div>
   </div>
+
+  <!-- TOASTS -->
+  <div id="toastContainer" class="toast-container"></div>
 
   <header class="site-header">
     <div class="container nav">
@@ -148,14 +202,14 @@
     <section id="home" class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="pill">Plateforme premium • business • finance • marchés</div>
+          <div class="pill">Plateforme premium • marchés financiers • business</div>
           <h1>
-            Apprends les marchés et le business
-            <span>comme dans un jeu intelligent</span>
+            Apprends la finance et les marchés
+            <span>de manière claire et ludique</span>
           </h1>
           <p class="hero-text">
-            Des leçons illustrées, des QCM adaptatifs, des quêtes débloquées selon ton niveau,
-            un système d’XP, 50 niveaux et une progression premium pensée pour durer.
+            Des vraies leçons, des QCM interactifs, des quêtes progressives, des niveaux
+            et une expérience pensée pour donner envie de rester.
           </p>
 
           <div class="hero-actions">
@@ -231,66 +285,30 @@
             <h2>Ton cockpit d’apprentissage</h2>
           </div>
           <p>
-            Une expérience inspirée des meilleures plateformes éducatives :
-            progression visible, parcours clair, feedback immédiat et contenu structuré.
+            Une interface plus légère, plus lisible, et pensée pour apprendre sans se perdre.
           </p>
         </div>
 
         <div class="overview-grid">
           <div class="overview-card glass">
             <div class="overview-icon">🧭</div>
-            <h3>Parcours guidé</h3>
-            <p>Le contenu affiché s’adapte à ton niveau choisi.</p>
+            <h3>Parcours clair</h3>
+            <p>Les contenus s’affichent progressivement, dans l’ordre logique.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">🎯</div>
-            <h3>QCM intelligents</h3>
-            <p>Chaque QCM est lié à une leçon précise, pour réviser immédiatement la bonne notion.</p>
+            <h3>QCM utiles</h3>
+            <p>Chaque QCM valide une vraie notion et t’oriente si besoin.</p>
           </div>
           <div class="overview-card glass">
             <div class="overview-icon">⚡</div>
-            <h3>XP & niveaux</h3>
-            <p>Tu gagnes des points, montes de niveau et débloques des récompenses jusqu’au niveau 50.</p>
+            <h3>Progression visible</h3>
+            <p>Niveaux, points, quêtes et récompenses sont toujours accessibles.</p>
           </div>
           <div class="overview-card glass">
-            <div class="overview-icon">🎁</div>
-            <h3>Récompenses</h3>
-            <p>Chaque palier important ou quête terminée donne une vraie sensation de progression.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Parcours</div>
-            <h2>Comment fonctionne la plateforme</h2>
-          </div>
-          <p>Apprendre, tester, corriger, débloquer. Tout est pensé pour rester motivant.</p>
-        </div>
-
-        <div class="roadmap-grid">
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">1</span>
-            <h3>Choisir son niveau</h3>
-            <p>Débutant, intermédiaire ou professionnel : l’interface se personnalise dès l’entrée.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">2</span>
-            <h3>Lire une leçon</h3>
-            <p>Chaque leçon est structurée avec explication, visuel, points-clés et approfondissement.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">3</span>
-            <h3>Faire un QCM</h3>
-            <p>Le site valide ou corrige avec un feedback immédiat, clair et premium.</p>
-          </div>
-          <div class="roadmap-card glass">
-            <span class="roadmap-step">4</span>
-            <h3>Monter de niveau</h3>
-            <p>Tu débloques progressivement des quêtes, des récompenses et des contenus plus riches.</p>
+            <div class="overview-icon">🎉</div>
+            <h3>Satisfaction immédiate</h3>
+            <p>Toasts, overlays et feedbacks rendent l’expérience plus motivante.</p>
           </div>
         </div>
       </div>
@@ -301,10 +319,10 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Leçons</div>
-            <h2>Bibliothèque intelligente</h2>
+            <h2>Un vrai parcours de formation</h2>
           </div>
           <p>
-            150 leçons au total : 50 débutant, 50 intermédiaire, 50 professionnel.
+            10 modules débutant, 10 intermédiaire, 10 professionnel. Sans répétition.
           </p>
         </div>
 
@@ -340,10 +358,10 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">QCM</div>
-            <h2>Entraînement adaptatif</h2>
+            <h2>Entraînement interactif</h2>
           </div>
           <p>
-            150 QCM liés aux leçons, avec correction immédiate et retour vers la bonne notion en cas d’erreur.
+            10 QCM débutant, 10 intermédiaire, 10 professionnel. Sans répétition.
           </p>
         </div>
 
@@ -368,10 +386,10 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Quêtes</div>
-            <h2>50 missions progressives</h2>
+            <h2>Des missions utiles et progressives</h2>
           </div>
           <p>
-            Certaines quêtes ne se débloquent que lorsque tu as lu des leçons précises ou atteint certains niveaux.
+            10 quêtes débutant, 10 intermédiaire, 10 professionnel.
           </p>
         </div>
 
@@ -388,9 +406,9 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Récompenses</div>
-            <h2>50 niveaux • badges • déblocages</h2>
+            <h2>30 niveaux • progression visible</h2>
           </div>
-          <p>Une progression longue, visuelle et motivante, pensée pour un vrai projet premium.</p>
+          <p>Une montée en niveau claire, motivante et cohérente.</p>
         </div>
 
         <div id="rewardsGrid" class="rewards-grid"></div>
@@ -409,7 +427,7 @@
             <h2>Le projet d’Amine Rachoui</h2>
           </div>
           <p>
-            Une plateforme portée par un étudiant en école de commerce, passionné par la finance, les marchés et l’apprentissage structuré.
+            Une plateforme portée par un étudiant en école de commerce, passionné par la finance et les marchés.
           </p>
         </div>
 
@@ -419,29 +437,28 @@
             <h3>Amine Rachoui</h3>
             <p class="about-role">Programme Grande École • ESSCA</p>
             <p class="about-text">
-              Mind & Markets est conçu comme un projet à la fois pédagogique et ambitieux :
-              apprendre plus vite, mieux structurer ses connaissances, et proposer une vraie
-              expérience digitale inspirée des meilleures plateformes éducatives.
+              Mind & Markets est pensé comme un projet pédagogique, premium et structurant :
+              rendre les sujets financiers plus accessibles sans les vider de leur contenu.
             </p>
           </div>
 
           <div class="about-card glass">
             <h3>Profil</h3>
             <ul class="about-list">
-              <li>Étudiant à l’ESSCA en Programme Grande École</li>
-              <li>Curiosité économique et financière marquée</li>
-              <li>Suivi des marchés et intérêt pour l’investissement</li>
-              <li>Analyse de portefeuille crypto depuis plusieurs années</li>
+              <li>Étudiant à l’ESSCA</li>
+              <li>Intérêt fort pour finance et marchés</li>
+              <li>Suivi des actifs financiers et crypto</li>
+              <li>Projet digital sérieux et différenciant</li>
             </ul>
           </div>
 
           <div class="about-card glass">
-            <h3>Expérience & discipline</h3>
+            <h3>Objectif du site</h3>
             <ul class="about-list">
-              <li>Stage de découverte chez Merck</li>
-              <li>Observation de structures industrielles et gestion de projet</li>
-              <li>Natation en compétition depuis de nombreuses années</li>
-              <li>Rigueur, autonomie, gestion du stress et persévérance</li>
+              <li>Apprendre avec méthode</li>
+              <li>Créer une vraie logique de progression</li>
+              <li>Rendre les notions mémorables</li>
+              <li>Offrir une expérience agréable et premium</li>
             </ul>
           </div>
         </div>
@@ -453,9 +470,9 @@
         <div class="final-cta glass">
           <div>
             <div class="section-kicker">Mind & Markets</div>
-            <h2>Une plateforme carrée, premium et partageable sur LinkedIn</h2>
+            <h2>Une plateforme claire, premium et partageable sur LinkedIn</h2>
             <p>
-              Le site est pensé pour être visuellement fort, crédible, interactif et différenciant.
+              Le site est pensé pour être crédible, agréable et utile, sans être lourd ni confus.
             </p>
           </div>
           <div class="cta-actions">
