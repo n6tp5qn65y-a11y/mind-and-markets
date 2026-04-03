@@ -1,416 +1,143 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FinanceLab — Apprendre les marchés &amp; la crypto</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-<!-- ============================================================
-     ÉCRAN D'ACCUEIL
-============================================================ -->
-<section id="screen-home" class="screen active">
-
-  <!-- Fond animé particules -->
-  <canvas id="particles-canvas"></canvas>
-
-  <!-- Navigation top -->
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <button class="btn-ghost" onclick="showScreen('screen-about')">À propos</button>
-  </nav>
-
-  <!-- Contenu central -->
-  <div class="hero-center">
-    <div class="hero-badge">📈 Éducation financière &amp; crypto</div>
-    <h1 class="hero-title">
-      Comprends les<br/>
-      <span class="gradient-text">marchés financiers</span><br/>
-      comme un pro.
-    </h1>
-    <p class="hero-sub">
-      15 leçons structurées · QCM interactifs · Système de progression<br/>
-      Du débutant au professionnel — gratuitement.
-    </p>
-
-    <!-- Stats rapides -->
-    <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">15</span><span class="stat-label">Leçons</span></div>
-      <div class="stat-sep"></div>
-      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Niveaux</span></div>
-      <div class="stat-sep"></div>
-      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Gratuit</span></div>
-    </div>
-
-    <button class="btn-primary btn-large" onclick="showScreen('screen-level')">
-      <span>Commencer l'apprentissage</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
-
-    <p class="disclaimer">⚠️ Contenu éducatif uniquement — ne constitue pas un conseil en investissement.</p>
-  </div>
-
-  <!-- Cartes flottantes décoratives -->
-  <div class="floating-cards">
-    <div class="f-card fc1">
-      <div class="fc-icon">₿</div>
-      <div class="fc-label">Bitcoin</div>
-      <div class="fc-val green">+4.2%</div>
-    </div>
-    <div class="f-card fc2">
-      <div class="fc-icon">📊</div>
-      <div class="fc-label">S&amp;P 500</div>
-      <div class="fc-val green">+1.1%</div>
-    </div>
-    <div class="f-card fc3">
-      <div class="fc-icon">Ξ</div>
-      <div class="fc-label">Ethereum</div>
-      <div class="fc-val red">−1.8%</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SÉLECTION DE NIVEAU
-============================================================ -->
-<section id="screen-level" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <button class="btn-ghost" onclick="showScreen('screen-home')">← Accueil</button>
-  </nav>
-
-  <div class="level-wrap">
-    <h2 class="section-title">Quel est ton niveau ?</h2>
-    <p class="section-sub">Choisis le parcours adapté à ta situation. Tu pourras changer à tout moment.</p>
-
-    <div class="level-cards">
-
-      <div class="level-card" onclick="selectLevel('debutant')">
-        <div class="lc-glow glow-green"></div>
-        <div class="lc-icon">🌱</div>
-        <h3>Débutant</h3>
-        <p>Tu découvres la finance et la crypto. On part des bases avec un langage simple et des exemples concrets.</p>
-        <ul>
-          <li>Qu'est-ce qu'un marché financier ?</li>
-          <li>Actions, obligations, ETF</li>
-          <li>Inflation &amp; diversification</li>
-          <li>Bitcoin pour les nuls</li>
-          <li>Premiers pas crypto</li>
-        </ul>
-        <div class="lc-badge">5 leçons · Niveau 1</div>
-        <button class="btn-level btn-green">Choisir ce niveau →</button>
-      </div>
-
-      <div class="level-card level-card-featured" onclick="selectLevel('intermediaire')">
-        <div class="lc-glow glow-blue"></div>
-        <div class="lc-ribbon">Populaire</div>
-        <div class="lc-icon">📈</div>
-        <h3>Intermédiaire</h3>
-        <p>Tu connais les bases. On monte d'un cran avec l'analyse, la stratégie et l'écosystème crypto.</p>
-        <ul>
-          <li>Analyse fondamentale</li>
-          <li>Gestion du risque</li>
-          <li>Ethereum &amp; DeFi</li>
-          <li>Stablecoins</li>
-          <li>Construction de portefeuille</li>
-        </ul>
-        <div class="lc-badge">5 leçons · Niveau 2</div>
-        <button class="btn-level btn-blue">Choisir ce niveau →</button>
-      </div>
-
-      <div class="level-card" onclick="selectLevel('professionnel')">
-        <div class="lc-glow glow-purple"></div>
-        <div class="lc-icon">🎯</div>
-        <h3>Professionnel</h3>
-        <p>Tu veux aller loin. Analyse technique, psychologie du trader, sécurité avancée et vision long terme.</p>
-        <ul>
-          <li>Analyse technique avancée</li>
-          <li>Psychologie de l'investisseur</li>
-          <li>Sécurité crypto</li>
-          <li>Stratégies long terme</li>
-          <li>Erreurs à éviter</li>
-        </ul>
-        <div class="lc-badge">5 leçons · Niveau 3</div>
-        <button class="btn-level btn-purple">Choisir ce niveau →</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     TABLEAU DE BORD (liste des leçons)
-============================================================ -->
-<section id="screen-dashboard" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <div class="nav-right">
-      <div class="score-badge">
-        <span class="score-icon">⚡</span>
-        <span id="score-display">0 pts</span>
-      </div>
-      <button class="btn-ghost" onclick="showScreen('screen-level')">← Niveaux</button>
-    </div>
-  </nav>
-
-  <!-- Barre de progression globale -->
-  <div class="progress-bar-wrap">
-    <div class="progress-bar-inner" id="global-progress-bar"></div>
-  </div>
-
-  <div class="dashboard-wrap">
-    <!-- Infos niveau -->
-    <div class="dashboard-header">
-      <div class="dh-left">
-        <div class="level-pill" id="dashboard-level-pill">🌱 Débutant</div>
-        <h2 id="dashboard-title">Ton parcours</h2>
-        <p id="dashboard-sub">5 leçons pour maîtriser les fondamentaux</p>
-      </div>
-      <div class="dh-right">
-        <div class="user-card">
-          <div class="uc-avatar" id="uc-avatar">🎓</div>
-          <div class="uc-info">
-            <div class="uc-level" id="uc-level-label">Niveau 1</div>
-            <div class="uc-xp">
-              <div class="xp-bar"><div class="xp-fill" id="xp-fill"></div></div>
-              <span id="xp-text">0 / 50 XP</span>
-            </div>
-          </div>
-        </div>
-        <!-- Badges -->
-        <div class="badges-row" id="badges-row"></div>
-      </div>
-    </div>
-
-    <!-- Liste des leçons -->
-    <div class="lessons-grid" id="lessons-grid"></div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     ÉCRAN DE LEÇON
-============================================================ -->
-<section id="screen-lesson" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <div class="nav-right">
-      <div class="score-badge">
-        <span class="score-icon">⚡</span>
-        <span id="score-display-2">0 pts</span>
-      </div>
-      <button class="btn-ghost" onclick="showScreen('screen-dashboard')">← Leçons</button>
-    </div>
-  </nav>
-
-  <div class="lesson-wrap">
-    <!-- Méta -->
-    <div class="lesson-meta">
-      <span class="lesson-num" id="lesson-num-label">Leçon 1</span>
-      <span class="lesson-level-tag" id="lesson-level-tag">Débutant</span>
-    </div>
-
-    <!-- Contenu dynamique -->
-    <div class="lesson-content" id="lesson-content"></div>
-
-    <!-- Bouton vers QCM -->
-    <div class="lesson-footer">
-      <button class="btn-primary" id="btn-start-quiz" onclick="startQuiz()">
-        <span>Passer au QCM</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     ÉCRAN QCM
-============================================================ -->
-<section id="screen-quiz" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <div class="nav-right">
-      <div class="score-badge">⚡ <span id="score-display-3">0 pts</span></div>
-      <button class="btn-ghost" id="btn-back-lesson" onclick="backToLesson()">← Leçon</button>
-    </div>
-  </nav>
-
-  <div class="quiz-wrap">
-    <div class="quiz-header">
-      <div class="quiz-label">QCM — Testez vos connaissances</div>
-      <div class="quiz-progress">
-        Question <span id="q-current">1</span> / <span id="q-total">3</span>
-      </div>
-    </div>
-
-    <div class="quiz-card" id="quiz-card">
-      <h3 class="quiz-question" id="quiz-question">Question ici</h3>
-      <div class="quiz-options" id="quiz-options"></div>
-    </div>
-
-    <!-- Feedback overlay (succès / erreur) -->
-    <div class="quiz-feedback hidden" id="quiz-feedback">
-      <div class="feedback-icon" id="feedback-icon">✅</div>
-      <div class="feedback-title" id="feedback-title">Bravo !</div>
-      <div class="feedback-msg" id="feedback-msg"></div>
-      <div class="feedback-pts" id="feedback-pts"></div>
-      <button class="btn-primary" id="feedback-btn" onclick="nextQuestion()">Continuer →</button>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     ÉCRAN RÉSULTAT
-============================================================ -->
-<section id="screen-result" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <button class="btn-ghost" onclick="showScreen('screen-dashboard')">← Toutes les leçons</button>
-  </nav>
-
-  <div class="result-wrap">
-    <div class="result-card">
-      <div class="result-emoji" id="result-emoji">🏆</div>
-      <h2 class="result-title" id="result-title">Leçon terminée !</h2>
-      <p class="result-msg" id="result-msg"></p>
-      <div class="result-score">
-        <span id="result-pts">+30 pts</span>
-      </div>
-      <div class="result-actions">
-        <button class="btn-primary" onclick="showScreen('screen-dashboard')">Prochaine leçon →</button>
-        <button class="btn-ghost" onclick="replayLesson()">Revoir la leçon</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     À PROPOS
-============================================================ -->
-<section id="screen-about" class="screen">
-  <nav class="top-nav">
-    <div class="logo">Finance<span>Lab</span></div>
-    <button class="btn-ghost" onclick="showScreen('screen-home')">← Accueil</button>
-  </nav>
-
-  <div class="about-wrap">
-
-    <div class="about-hero">
-      <div class="about-avatar">AM</div>
-      <h2>À propos de FinanceLab</h2>
-      <p class="about-tagline">Rendre la finance accessible à tous.</p>
-    </div>
-
-    <div class="about-grid">
-
-      <div class="about-card">
-        <div class="ac-icon">👩‍🎓</div>
-        <h3>Le projet</h3>
-        <p>
-          <strong>FinanceLab</strong> a été créé par <strong>Amina Rachoui</strong>, étudiante en première année PGE à l'ESCA École de Management.
-        </p>
-        <p>
-          Face au constat que l'éducation financière reste trop peu accessible et souvent perçue comme complexe, ce projet est né avec une ambition simple : <em>démocratiser la connaissance des marchés financiers et des crypto-monnaies</em> pour le plus grand nombre.
-        </p>
-        <p>
-          FinanceLab propose un parcours structuré, progressif et interactif — du débutant curieux au profil plus avancé — avec un contenu pédagogique clair, des QCM, et un système de progression motivant.
-        </p>
-      </div>
-
-      <div class="about-card">
-        <div class="ac-icon">📚</div>
-        <h3>Sources &amp; références</h3>
-        <p>Le contenu de ce site s'appuie sur des ressources reconnues :</p>
-        <ul class="sources-list">
-          <li>
-            <strong>Père Riche, Père Pauvre</strong> — Robert Kiyosaki<br/>
-            <span class="source-note">Référence fondamentale pour la philosophie d'éducation financière et l'état d'esprit de l'investisseur.</span>
-          </li>
-          <li>
-            <strong>AMF (Autorité des Marchés Financiers)</strong><br/>
-            <span class="source-note">amf-france.org — guides pédagogiques officiels sur les instruments financiers.</span>
-          </li>
-          <li>
-            <strong>Investopedia</strong><br/>
-            <span class="source-note">investopedia.com — encyclopédie financière de référence anglophone.</span>
-          </li>
-          <li>
-            <strong>CoinDesk &amp; CoinTelegraph</strong><br/>
-            <span class="source-note">Médias spécialisés dans l'actualité et l'éducation crypto.</span>
-          </li>
-          <li>
-            <strong>Ethereum.org / Bitcoin.org</strong><br/>
-            <span class="source-note">Documentation officielle des protocoles.</span>
-          </li>
-          <li>
-            <strong>OCDE — Financial Education</strong><br/>
-            <span class="source-note">Études internationales sur la littératie financière.</span>
-          </li>
-        </ul>
-        <div class="disclaimer-box">
-          ⚠️ <strong>Avertissement :</strong> Le contenu de FinanceLab est exclusivement éducatif et ne constitue pas un conseil en investissement. Toute décision financière est de la responsabilité de l'utilisateur.
-        </div>
-      </div>
-
-      <div class="about-card about-card-full">
-        <div class="ac-icon">🎯</div>
-        <h3>Notre philosophie</h3>
-        <div class="philosophy-grid">
-          <div class="ph-item">
-            <span class="ph-icon">🌱</span>
-            <strong>Accessibilité</strong>
-            <p>Apprendre la finance ne doit pas nécessiter un diplôme. On part des bases, sans jargon inutile.</p>
-          </div>
-          <div class="ph-item">
-            <span class="ph-icon">🎮</span>
-            <strong>Engagement</strong>
-            <p>La gamification n'est pas qu'une mode — elle aide à progresser et à rester motivé sur la durée.</p>
-          </div>
-          <div class="ph-item">
-            <span class="ph-icon">🔬</span>
-            <strong>Rigueur</strong>
-            <p>Chaque concept est expliqué avec soin. Pas de promesses de rendements, pas de conseil biaisé.</p>
-          </div>
-          <div class="ph-item">
-            <span class="ph-icon">🚀</span>
-            <strong>Progression</strong>
-            <p>Le savoir se construit par étapes. Notre parcours en 3 niveaux accompagne chaque profil d'apprenant.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-logo">Finance<span>Lab</span></div>
-      <p>Créé avec ❤️ par Amina Rachoui · ESCA École de Management · PGE 1ère année</p>
-      <p class="footer-disc">Contenu éducatif uniquement — ne constitue pas un conseil en investissement.</p>
-      <div class="footer-links">
-        <span>© 2025 FinanceLab</span>
-        <span>·</span>
-        <span>Sources : AMF, Investopedia, Bitcoin.org, Ethereum.org</span>
-      </div>
-    </footer>
-
-  </div>
-</section>
-
-
-<!-- ============================================================
-     OVERLAY DE SUCCÈS (animation globale)
-============================================================ -->
-<div class="confetti-overlay hidden" id="confetti-overlay"></div>
-
-<script src="script.js"></script>
-</body>
-</html>
+diff --git a/index.html b/index.html
+index 4e03c9f4a9228c0eabdf1848b4790b911b23a531..fc3c05dedc74f6eec2a64f44da94583defca4dd9 100644
+--- a/index.html
++++ b/index.html
+@@ -294,51 +294,51 @@
+ 
+ 
+ <!-- ============================================================
+      À PROPOS
+ ============================================================ -->
+ <section id="screen-about" class="screen">
+   <nav class="top-nav">
+     <div class="logo">Finance<span>Lab</span></div>
+     <button class="btn-ghost" onclick="showScreen('screen-home')">← Accueil</button>
+   </nav>
+ 
+   <div class="about-wrap">
+ 
+     <div class="about-hero">
+       <div class="about-avatar">AM</div>
+       <h2>À propos de FinanceLab</h2>
+       <p class="about-tagline">Rendre la finance accessible à tous.</p>
+     </div>
+ 
+     <div class="about-grid">
+ 
+       <div class="about-card">
+         <div class="ac-icon">👩‍🎓</div>
+         <h3>Le projet</h3>
+         <p>
+-          <strong>FinanceLab</strong> a été créé par <strong>Amina Rachoui</strong>, étudiante en première année PGE à l'ESCA École de Management.
++          <strong>FinanceLab</strong> a été créé par <strong>Amine Rachoui</strong>, étudiant en 1A PGE à l'ESSCA Paris.
+         </p>
+         <p>
+           Face au constat que l'éducation financière reste trop peu accessible et souvent perçue comme complexe, ce projet est né avec une ambition simple : <em>démocratiser la connaissance des marchés financiers et des crypto-monnaies</em> pour le plus grand nombre.
+         </p>
+         <p>
+           FinanceLab propose un parcours structuré, progressif et interactif — du débutant curieux au profil plus avancé — avec un contenu pédagogique clair, des QCM, et un système de progression motivant.
+         </p>
+       </div>
+ 
+       <div class="about-card">
+         <div class="ac-icon">📚</div>
+         <h3>Sources &amp; références</h3>
+         <p>Le contenu de ce site s'appuie sur des ressources reconnues :</p>
+         <ul class="sources-list">
+           <li>
+             <strong>Père Riche, Père Pauvre</strong> — Robert Kiyosaki<br/>
+             <span class="source-note">Référence fondamentale pour la philosophie d'éducation financière et l'état d'esprit de l'investisseur.</span>
+           </li>
+           <li>
+             <strong>AMF (Autorité des Marchés Financiers)</strong><br/>
+             <span class="source-note">amf-france.org — guides pédagogiques officiels sur les instruments financiers.</span>
+           </li>
+           <li>
+             <strong>Investopedia</strong><br/>
+             <span class="source-note">investopedia.com — encyclopédie financière de référence anglophone.</span>
+@@ -371,46 +371,84 @@
+             <p>Apprendre la finance ne doit pas nécessiter un diplôme. On part des bases, sans jargon inutile.</p>
+           </div>
+           <div class="ph-item">
+             <span class="ph-icon">🎮</span>
+             <strong>Engagement</strong>
+             <p>La gamification n'est pas qu'une mode — elle aide à progresser et à rester motivé sur la durée.</p>
+           </div>
+           <div class="ph-item">
+             <span class="ph-icon">🔬</span>
+             <strong>Rigueur</strong>
+             <p>Chaque concept est expliqué avec soin. Pas de promesses de rendements, pas de conseil biaisé.</p>
+           </div>
+           <div class="ph-item">
+             <span class="ph-icon">🚀</span>
+             <strong>Progression</strong>
+             <p>Le savoir se construit par étapes. Notre parcours en 3 niveaux accompagne chaque profil d'apprenant.</p>
+           </div>
+         </div>
+       </div>
+ 
+     </div>
+ 
+     <!-- Footer -->
+     <footer class="site-footer">
+       <div class="footer-logo">Finance<span>Lab</span></div>
+-      <p>Créé avec ❤️ par Amina Rachoui · ESCA École de Management · PGE 1ère année</p>
++      <p>Créé avec ❤️ par Amine Rachoui · ESSCA Paris · 1A PGE</p>
++      <p>Contact : <a href="mailto:aminerachoui28@gmail.com">aminerachoui28@gmail.com</a> · <a href="https://www.linkedin.com/in/amine-rachoui/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+       <p class="footer-disc">Contenu éducatif uniquement — ne constitue pas un conseil en investissement.</p>
+       <div class="footer-links">
+         <span>© 2025 FinanceLab</span>
+         <span>·</span>
+         <span>Sources : AMF, Investopedia, Bitcoin.org, Ethereum.org</span>
+       </div>
+     </footer>
+ 
+   </div>
+ </section>
+ 
+ 
+ <!-- ============================================================
+      OVERLAY DE SUCCÈS (animation globale)
+ ============================================================ -->
+ <div class="confetti-overlay hidden" id="confetti-overlay"></div>
++<div class="result-overlay hidden" id="result-overlay"></div>
++
++<!-- Assistant IA -->
++<button class="ai-orb hidden" id="ai-orb" onclick="toggleAiAssistant()" aria-label="Ouvrir l'assistant IA">₿</button>
++<aside class="ai-panel hidden" id="ai-panel">
++  <div class="ai-head">
++    <strong>Assistant IA</strong>
++    <button class="btn-ghost" onclick="toggleAiAssistant()">Fermer</button>
++  </div>
++  <div class="ai-body" id="ai-body">
++    Pose une question sur la finance, la crypto, la gestion du risque ou la leçon en cours.
++  </div>
++  <div class="ai-controls">
++    <input type="text" id="ai-input" placeholder="Ex: Explique-moi l'effet de levier simplement..." />
++    <button class="btn-primary" onclick="askAssistant()">Envoyer</button>
++  </div>
++</aside>
++
++<!-- Modal feedback 1 minute -->
++<div class="rating-modal hidden" id="rating-modal">
++  <div class="rating-card">
++    <h3>Ton avis compte ⭐</h3>
++    <p>Tu es sur le site depuis plus d'une minute. Note ton expérience.</p>
++    <div class="stars" id="rating-stars">
++      <button onclick="setRating(1)">★</button>
++      <button onclick="setRating(2)">★</button>
++      <button onclick="setRating(3)">★</button>
++      <button onclick="setRating(4)">★</button>
++      <button onclick="setRating(5)">★</button>
++    </div>
++    <textarea id="rating-comment" rows="4" placeholder="Ton commentaire (optionnel)"></textarea>
++    <div class="rating-actions">
++      <button class="btn-ghost" onclick="dismissRatingModal()">Plus tard</button>
++      <button class="btn-primary" onclick="submitRating()">Envoyer</button>
++    </div>
++  </div>
++</div>
+ 
+ <script src="script.js"></script>
+ </body>
+ </html>
