@@ -3,503 +3,414 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mind & Markets</title>
-  <meta
-    name="description"
-    content="Mind & Markets - plateforme premium et ludique pour apprendre les marchés financiers et le business."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
+  <title>FinanceLab — Apprendre les marchés &amp; la crypto</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="bg-glow glow-1"></div>
-  <div class="bg-glow glow-2"></div>
-  <div class="bg-glow glow-3"></div>
 
-  <!-- ONBOARDING -->
-  <div id="onboardingOverlay" class="fullscreen-modal visible">
-    <div class="fullscreen-card onboarding-card">
-      <div class="logo-hero">
-        <svg viewBox="0 0 240 240" class="logo-svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#34d399" />
-              <stop offset="55%" stop-color="#8b5cf6" />
-              <stop offset="100%" stop-color="#ec4899" />
-            </linearGradient>
-          </defs>
-          <rect x="20" y="20" width="200" height="200" rx="54" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" />
-          <path d="M58 154 L94 98 L126 130 L178 76" fill="none" stroke="url(#logoGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="178" cy="76" r="10" fill="#34d399" />
-          <path d="M64 70 C90 46, 126 46, 152 70" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="8" stroke-linecap="round"/>
-          <text x="120" y="194" text-anchor="middle" fill="white" font-size="46" font-weight="900">M&M</text>
-        </svg>
+<!-- ============================================================
+     ÉCRAN D'ACCUEIL
+============================================================ -->
+<section id="screen-home" class="screen active">
+
+  <!-- Fond animé particules -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation top -->
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <button class="btn-ghost" onclick="showScreen('screen-about')">À propos</button>
+  </nav>
+
+  <!-- Contenu central -->
+  <div class="hero-center">
+    <div class="hero-badge">📈 Éducation financière &amp; crypto</div>
+    <h1 class="hero-title">
+      Comprends les<br/>
+      <span class="gradient-text">marchés financiers</span><br/>
+      comme un pro.
+    </h1>
+    <p class="hero-sub">
+      15 leçons structurées · QCM interactifs · Système de progression<br/>
+      Du débutant au professionnel — gratuitement.
+    </p>
+
+    <!-- Stats rapides -->
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">15</span><span class="stat-label">Leçons</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Niveaux</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Gratuit</span></div>
+    </div>
+
+    <button class="btn-primary btn-large" onclick="showScreen('screen-level')">
+      <span>Commencer l'apprentissage</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <p class="disclaimer">⚠️ Contenu éducatif uniquement — ne constitue pas un conseil en investissement.</p>
+  </div>
+
+  <!-- Cartes flottantes décoratives -->
+  <div class="floating-cards">
+    <div class="f-card fc1">
+      <div class="fc-icon">₿</div>
+      <div class="fc-label">Bitcoin</div>
+      <div class="fc-val green">+4.2%</div>
+    </div>
+    <div class="f-card fc2">
+      <div class="fc-icon">📊</div>
+      <div class="fc-label">S&amp;P 500</div>
+      <div class="fc-val green">+1.1%</div>
+    </div>
+    <div class="f-card fc3">
+      <div class="fc-icon">Ξ</div>
+      <div class="fc-label">Ethereum</div>
+      <div class="fc-val red">−1.8%</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SÉLECTION DE NIVEAU
+============================================================ -->
+<section id="screen-level" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <button class="btn-ghost" onclick="showScreen('screen-home')">← Accueil</button>
+  </nav>
+
+  <div class="level-wrap">
+    <h2 class="section-title">Quel est ton niveau ?</h2>
+    <p class="section-sub">Choisis le parcours adapté à ta situation. Tu pourras changer à tout moment.</p>
+
+    <div class="level-cards">
+
+      <div class="level-card" onclick="selectLevel('debutant')">
+        <div class="lc-glow glow-green"></div>
+        <div class="lc-icon">🌱</div>
+        <h3>Débutant</h3>
+        <p>Tu découvres la finance et la crypto. On part des bases avec un langage simple et des exemples concrets.</p>
+        <ul>
+          <li>Qu'est-ce qu'un marché financier ?</li>
+          <li>Actions, obligations, ETF</li>
+          <li>Inflation &amp; diversification</li>
+          <li>Bitcoin pour les nuls</li>
+          <li>Premiers pas crypto</li>
+        </ul>
+        <div class="lc-badge">5 leçons · Niveau 1</div>
+        <button class="btn-level btn-green">Choisir ce niveau →</button>
       </div>
 
-      <p class="overlay-kicker">Bienvenue sur Mind & Markets</p>
-      <h1>Choisis ton niveau</h1>
-      <p class="overlay-text">
-        Pour te proposer les bonnes leçons, les bons QCM et les bonnes quêtes,
-        sélectionne ton niveau actuel.
-      </p>
+      <div class="level-card level-card-featured" onclick="selectLevel('intermediaire')">
+        <div class="lc-glow glow-blue"></div>
+        <div class="lc-ribbon">Populaire</div>
+        <div class="lc-icon">📈</div>
+        <h3>Intermédiaire</h3>
+        <p>Tu connais les bases. On monte d'un cran avec l'analyse, la stratégie et l'écosystème crypto.</p>
+        <ul>
+          <li>Analyse fondamentale</li>
+          <li>Gestion du risque</li>
+          <li>Ethereum &amp; DeFi</li>
+          <li>Stablecoins</li>
+          <li>Construction de portefeuille</li>
+        </ul>
+        <div class="lc-badge">5 leçons · Niveau 2</div>
+        <button class="btn-level btn-blue">Choisir ce niveau →</button>
+      </div>
 
-      <div class="level-choice-grid">
-        <button class="level-choice" data-level-choice="debutant">
-          <span class="level-choice-emoji">🌱</span>
-          <strong>Débutant</strong>
-          <span>Des bases simples, structurées, sans jargon inutile.</span>
-        </button>
+      <div class="level-card" onclick="selectLevel('professionnel')">
+        <div class="lc-glow glow-purple"></div>
+        <div class="lc-icon">🎯</div>
+        <h3>Professionnel</h3>
+        <p>Tu veux aller loin. Analyse technique, psychologie du trader, sécurité avancée et vision long terme.</p>
+        <ul>
+          <li>Analyse technique avancée</li>
+          <li>Psychologie de l'investisseur</li>
+          <li>Sécurité crypto</li>
+          <li>Stratégies long terme</li>
+          <li>Erreurs à éviter</li>
+        </ul>
+        <div class="lc-badge">5 leçons · Niveau 3</div>
+        <button class="btn-level btn-purple">Choisir ce niveau →</button>
+      </div>
 
-        <button class="level-choice" data-level-choice="intermediaire">
-          <span class="level-choice-emoji">📈</span>
-          <strong>Intermédiaire</strong>
-          <span>Plus d’analyse, plus de logique de marché et de stratégie.</span>
-        </button>
+    </div>
+  </div>
+</section>
 
-        <button class="level-choice" data-level-choice="professionnel">
-          <span class="level-choice-emoji">🧠</span>
-          <strong>Professionnel</strong>
-          <span>Formats plus complets : analyses, cas, angles macro et références.</span>
-        </button>
+
+<!-- ============================================================
+     TABLEAU DE BORD (liste des leçons)
+============================================================ -->
+<section id="screen-dashboard" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <div class="nav-right">
+      <div class="score-badge">
+        <span class="score-icon">⚡</span>
+        <span id="score-display">0 pts</span>
+      </div>
+      <button class="btn-ghost" onclick="showScreen('screen-level')">← Niveaux</button>
+    </div>
+  </nav>
+
+  <!-- Barre de progression globale -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-inner" id="global-progress-bar"></div>
+  </div>
+
+  <div class="dashboard-wrap">
+    <!-- Infos niveau -->
+    <div class="dashboard-header">
+      <div class="dh-left">
+        <div class="level-pill" id="dashboard-level-pill">🌱 Débutant</div>
+        <h2 id="dashboard-title">Ton parcours</h2>
+        <p id="dashboard-sub">5 leçons pour maîtriser les fondamentaux</p>
+      </div>
+      <div class="dh-right">
+        <div class="user-card">
+          <div class="uc-avatar" id="uc-avatar">🎓</div>
+          <div class="uc-info">
+            <div class="uc-level" id="uc-level-label">Niveau 1</div>
+            <div class="uc-xp">
+              <div class="xp-bar"><div class="xp-fill" id="xp-fill"></div></div>
+              <span id="xp-text">0 / 50 XP</span>
+            </div>
+          </div>
+        </div>
+        <!-- Badges -->
+        <div class="badges-row" id="badges-row"></div>
+      </div>
+    </div>
+
+    <!-- Liste des leçons -->
+    <div class="lessons-grid" id="lessons-grid"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ÉCRAN DE LEÇON
+============================================================ -->
+<section id="screen-lesson" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <div class="nav-right">
+      <div class="score-badge">
+        <span class="score-icon">⚡</span>
+        <span id="score-display-2">0 pts</span>
+      </div>
+      <button class="btn-ghost" onclick="showScreen('screen-dashboard')">← Leçons</button>
+    </div>
+  </nav>
+
+  <div class="lesson-wrap">
+    <!-- Méta -->
+    <div class="lesson-meta">
+      <span class="lesson-num" id="lesson-num-label">Leçon 1</span>
+      <span class="lesson-level-tag" id="lesson-level-tag">Débutant</span>
+    </div>
+
+    <!-- Contenu dynamique -->
+    <div class="lesson-content" id="lesson-content"></div>
+
+    <!-- Bouton vers QCM -->
+    <div class="lesson-footer">
+      <button class="btn-primary" id="btn-start-quiz" onclick="startQuiz()">
+        <span>Passer au QCM</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ÉCRAN QCM
+============================================================ -->
+<section id="screen-quiz" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <div class="nav-right">
+      <div class="score-badge">⚡ <span id="score-display-3">0 pts</span></div>
+      <button class="btn-ghost" id="btn-back-lesson" onclick="backToLesson()">← Leçon</button>
+    </div>
+  </nav>
+
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <div class="quiz-label">QCM — Testez vos connaissances</div>
+      <div class="quiz-progress">
+        Question <span id="q-current">1</span> / <span id="q-total">3</span>
+      </div>
+    </div>
+
+    <div class="quiz-card" id="quiz-card">
+      <h3 class="quiz-question" id="quiz-question">Question ici</h3>
+      <div class="quiz-options" id="quiz-options"></div>
+    </div>
+
+    <!-- Feedback overlay (succès / erreur) -->
+    <div class="quiz-feedback hidden" id="quiz-feedback">
+      <div class="feedback-icon" id="feedback-icon">✅</div>
+      <div class="feedback-title" id="feedback-title">Bravo !</div>
+      <div class="feedback-msg" id="feedback-msg"></div>
+      <div class="feedback-pts" id="feedback-pts"></div>
+      <button class="btn-primary" id="feedback-btn" onclick="nextQuestion()">Continuer →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ÉCRAN RÉSULTAT
+============================================================ -->
+<section id="screen-result" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <button class="btn-ghost" onclick="showScreen('screen-dashboard')">← Toutes les leçons</button>
+  </nav>
+
+  <div class="result-wrap">
+    <div class="result-card">
+      <div class="result-emoji" id="result-emoji">🏆</div>
+      <h2 class="result-title" id="result-title">Leçon terminée !</h2>
+      <p class="result-msg" id="result-msg"></p>
+      <div class="result-score">
+        <span id="result-pts">+30 pts</span>
+      </div>
+      <div class="result-actions">
+        <button class="btn-primary" onclick="showScreen('screen-dashboard')">Prochaine leçon →</button>
+        <button class="btn-ghost" onclick="replayLesson()">Revoir la leçon</button>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- RESULT OVERLAY -->
-  <div id="resultOverlay" class="fullscreen-modal">
-    <div class="fullscreen-card result-card">
-      <div id="resultOverlayEmoji" class="result-emoji">🏆</div>
-      <p id="resultOverlayKicker" class="overlay-kicker">Bravo</p>
-      <h2 id="resultOverlayTitle">Nouveau palier atteint</h2>
-      <p id="resultOverlayText" class="overlay-text">Tu progresses très bien.</p>
-      <div id="resultOverlayActions" class="overlay-actions"></div>
+
+<!-- ============================================================
+     À PROPOS
+============================================================ -->
+<section id="screen-about" class="screen">
+  <nav class="top-nav">
+    <div class="logo">Finance<span>Lab</span></div>
+    <button class="btn-ghost" onclick="showScreen('screen-home')">← Accueil</button>
+  </nav>
+
+  <div class="about-wrap">
+
+    <div class="about-hero">
+      <div class="about-avatar">AM</div>
+      <h2>À propos de FinanceLab</h2>
+      <p class="about-tagline">Rendre la finance accessible à tous.</p>
     </div>
-  </div>
 
-  <!-- LONG LESSON MODAL -->
-  <div id="lessonModal" class="fullscreen-modal">
-    <div class="lesson-modal-card">
-      <div class="lesson-modal-top">
-        <div>
-          <p id="lessonModalKicker" class="overlay-kicker">Leçon détaillée</p>
-          <h2 id="lessonModalTitle">Titre</h2>
-        </div>
-        <button id="closeLessonModal" class="ghost-btn">Fermer</button>
+    <div class="about-grid">
+
+      <div class="about-card">
+        <div class="ac-icon">👩‍🎓</div>
+        <h3>Le projet</h3>
+        <p>
+          <strong>FinanceLab</strong> a été créé par <strong>Amina Rachoui</strong>, étudiante en première année PGE à l'ESCA École de Management.
+        </p>
+        <p>
+          Face au constat que l'éducation financière reste trop peu accessible et souvent perçue comme complexe, ce projet est né avec une ambition simple : <em>démocratiser la connaissance des marchés financiers et des crypto-monnaies</em> pour le plus grand nombre.
+        </p>
+        <p>
+          FinanceLab propose un parcours structuré, progressif et interactif — du débutant curieux au profil plus avancé — avec un contenu pédagogique clair, des QCM, et un système de progression motivant.
+        </p>
       </div>
 
-      <div class="lesson-modal-content">
-        <div class="lesson-modal-meta">
-          <span id="lessonModalTrack" class="badge-mini">Débutant</span>
-          <span id="lessonModalCategory" class="badge-mini">Marchés</span>
-          <span id="lessonModalFormat" class="badge-mini">Leçon</span>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Problématique</h3>
-          <p id="lessonModalProblem"></p>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Introduction</h3>
-          <p id="lessonModalIntro"></p>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Plan</h3>
-          <ol id="lessonModalPlan"></ol>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Développement</h3>
-          <div id="lessonModalBody"></div>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Conclusion</h3>
-          <p id="lessonModalConclusion"></p>
-        </div>
-
-        <div class="lesson-modal-block">
-          <h3>Question d’actualité</h3>
-          <p id="lessonModalCurrentQuestion"></p>
+      <div class="about-card">
+        <div class="ac-icon">📚</div>
+        <h3>Sources &amp; références</h3>
+        <p>Le contenu de ce site s'appuie sur des ressources reconnues :</p>
+        <ul class="sources-list">
+          <li>
+            <strong>Père Riche, Père Pauvre</strong> — Robert Kiyosaki<br/>
+            <span class="source-note">Référence fondamentale pour la philosophie d'éducation financière et l'état d'esprit de l'investisseur.</span>
+          </li>
+          <li>
+            <strong>AMF (Autorité des Marchés Financiers)</strong><br/>
+            <span class="source-note">amf-france.org — guides pédagogiques officiels sur les instruments financiers.</span>
+          </li>
+          <li>
+            <strong>Investopedia</strong><br/>
+            <span class="source-note">investopedia.com — encyclopédie financière de référence anglophone.</span>
+          </li>
+          <li>
+            <strong>CoinDesk &amp; CoinTelegraph</strong><br/>
+            <span class="source-note">Médias spécialisés dans l'actualité et l'éducation crypto.</span>
+          </li>
+          <li>
+            <strong>Ethereum.org / Bitcoin.org</strong><br/>
+            <span class="source-note">Documentation officielle des protocoles.</span>
+          </li>
+          <li>
+            <strong>OCDE — Financial Education</strong><br/>
+            <span class="source-note">Études internationales sur la littératie financière.</span>
+          </li>
+        </ul>
+        <div class="disclaimer-box">
+          ⚠️ <strong>Avertissement :</strong> Le contenu de FinanceLab est exclusivement éducatif et ne constitue pas un conseil en investissement. Toute décision financière est de la responsabilité de l'utilisateur.
         </div>
       </div>
+
+      <div class="about-card about-card-full">
+        <div class="ac-icon">🎯</div>
+        <h3>Notre philosophie</h3>
+        <div class="philosophy-grid">
+          <div class="ph-item">
+            <span class="ph-icon">🌱</span>
+            <strong>Accessibilité</strong>
+            <p>Apprendre la finance ne doit pas nécessiter un diplôme. On part des bases, sans jargon inutile.</p>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">🎮</span>
+            <strong>Engagement</strong>
+            <p>La gamification n'est pas qu'une mode — elle aide à progresser et à rester motivé sur la durée.</p>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">🔬</span>
+            <strong>Rigueur</strong>
+            <p>Chaque concept est expliqué avec soin. Pas de promesses de rendements, pas de conseil biaisé.</p>
+          </div>
+          <div class="ph-item">
+            <span class="ph-icon">🚀</span>
+            <strong>Progression</strong>
+            <p>Le savoir se construit par étapes. Notre parcours en 3 niveaux accompagne chaque profil d'apprenant.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <!-- 3 MIN RATING -->
-  <div id="ratingOverlay" class="fullscreen-modal">
-    <div class="fullscreen-card rating-card">
-      <div class="result-emoji">⭐</div>
-      <p class="overlay-kicker">Ton avis compte</p>
-      <h2>Comment trouves-tu la plateforme ?</h2>
-      <p class="overlay-text">
-        Cela nous aide à rendre l’expérience encore plus claire et agréable.
-      </p>
-
-      <div class="star-row" id="starRow">
-        <button class="star-btn" data-rating="1">★</button>
-        <button class="star-btn" data-rating="2">★</button>
-        <button class="star-btn" data-rating="3">★</button>
-        <button class="star-btn" data-rating="4">★</button>
-        <button class="star-btn" data-rating="5">★</button>
-      </div>
-
-      <div class="overlay-actions">
-        <button id="closeRatingBtn" class="overlay-btn">Plus tard</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOASTS -->
-  <div id="toastContainer" class="toast-container"></div>
-
-  <header class="site-header">
-    <div class="container nav">
-      <a href="#home" class="brand">
-        <div class="brand-mark">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <defs>
-              <linearGradient id="markGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#34d399"/>
-                <stop offset="55%" stop-color="#8b5cf6"/>
-                <stop offset="100%" stop-color="#ec4899"/>
-              </linearGradient>
-            </defs>
-            <rect x="8" y="8" width="104" height="104" rx="26" fill="rgba(255,255,255,0.08)" />
-            <path d="M24 78 L44 52 L64 66 L92 34" fill="none" stroke="url(#markGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="92" cy="34" r="5" fill="#34d399"/>
-          </svg>
-        </div>
-        <div>
-          <div class="brand-title">Mind & Markets</div>
-          <div class="brand-subtitle">Learn • Play • Level Up</div>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#dashboard">Dashboard</a>
-        <a href="#lessons">Leçons</a>
-        <a href="#quiz">QCM</a>
-        <a href="#quests">Quêtes</a>
-        <a href="#rewards">Récompenses</a>
-        <a href="#about">À propos</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button id="changeTrackBtn" class="ghost-btn">Changer de niveau</button>
-        <a class="nav-btn" href="#quiz">Commencer</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="pill">Plateforme premium • marchés financiers • business</div>
-          <h1>
-            Apprends la finance et les marchés
-            <span>de manière claire et ludique</span>
-          </h1>
-          <p class="hero-text">
-            Des vraies leçons, des QCM interactifs, des quêtes progressives, des niveaux
-            et une expérience pensée pour donner envie de rester.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#lessons" class="btn btn-primary">Explorer les leçons</a>
-            <a href="#quiz" class="btn btn-secondary">Faire un QCM</a>
-          </div>
-
-          <div class="stats-grid">
-            <div class="stat-card">
-              <span>Profil actif</span>
-              <strong id="trackStat">Débutant</strong>
-            </div>
-            <div class="stat-card">
-              <span>Niveau</span>
-              <strong id="levelStat">1</strong>
-            </div>
-            <div class="stat-card">
-              <span>Points</span>
-              <strong id="pointsStat">0</strong>
-            </div>
-            <div class="stat-card">
-              <span>Quêtes terminées</span>
-              <strong id="questsStat">0</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-panel glass">
-          <div class="hero-panel-top">
-            <div>
-              <div class="mini-label">Recommandation du moment</div>
-              <h2 id="heroRecommendationTitle">Choisis ton niveau</h2>
-            </div>
-            <div class="mini-badge" id="heroTrackBadge">Personnalisé</div>
-          </div>
-
-          <div class="hero-highlight">
-            <div class="hero-highlight-title">Principe du site</div>
-            <p id="heroRecommendationText">
-              Commence par choisir ton niveau, puis découvre un parcours qui s’adapte à toi.
-            </p>
-          </div>
-
-          <div class="progress-card">
-            <div class="progress-label-row">
-              <span>Progression vers le niveau suivant</span>
-              <span id="progressText">0 / 120</span>
-            </div>
-            <div class="progress-bar">
-              <div id="progressBarFill" class="progress-fill"></div>
-            </div>
-          </div>
-
-          <div class="hero-mini-grid">
-            <div class="mini-status-card">
-              <span>Leçons validées</span>
-              <strong id="lessonsStatMini">0</strong>
-            </div>
-            <div class="mini-status-card">
-              <span>QCM réussis</span>
-              <strong id="quizStatMini">0</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="dashboard" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Dashboard</div>
-            <h2>Ton cockpit d’apprentissage</h2>
-          </div>
-          <p>
-            Une interface plus légère, plus lisible, et pensée pour apprendre sans se perdre.
-          </p>
-        </div>
-
-        <div class="overview-grid">
-          <div class="overview-card glass">
-            <div class="overview-icon">🧭</div>
-            <h3>Parcours clair</h3>
-            <p>Les contenus s’affichent progressivement, dans l’ordre logique.</p>
-          </div>
-          <div class="overview-card glass">
-            <div class="overview-icon">🎯</div>
-            <h3>QCM utiles</h3>
-            <p>Chaque QCM valide une vraie notion et t’oriente si besoin.</p>
-          </div>
-          <div class="overview-card glass">
-            <div class="overview-icon">⚡</div>
-            <h3>Progression visible</h3>
-            <p>Niveaux, points, quêtes et récompenses sont toujours accessibles.</p>
-          </div>
-          <div class="overview-card glass">
-            <div class="overview-icon">🎉</div>
-            <h3>Satisfaction immédiate</h3>
-            <p>Toasts, overlays et feedbacks rendent l’expérience plus motivante.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="lessons" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Leçons</div>
-            <h2>Un vrai parcours de formation</h2>
-          </div>
-          <p>
-            10 modules débutant, 10 intermédiaire, 10 professionnel. Sans répétition.
-          </p>
-        </div>
-
-        <div class="control-row">
-          <div class="filter-row" id="lessonAudienceFilters">
-            <button class="filter-btn active" data-audience-filter="recommended">Recommandé</button>
-            <button class="filter-btn" data-audience-filter="debutant">Débutant</button>
-            <button class="filter-btn" data-audience-filter="intermediaire">Intermédiaire</button>
-            <button class="filter-btn" data-audience-filter="professionnel">Professionnel</button>
-            <button class="filter-btn" data-audience-filter="all">Tout voir</button>
-          </div>
-
-          <div class="filter-row" id="lessonCategoryFilters">
-            <button class="filter-btn active" data-category-filter="all">Toutes catégories</button>
-            <button class="filter-btn" data-category-filter="Marchés">Marchés</button>
-            <button class="filter-btn" data-category-filter="Macro">Macro</button>
-            <button class="filter-btn" data-category-filter="Business">Business</button>
-            <button class="filter-btn" data-category-filter="Investissement">Investissement</button>
-          </div>
-        </div>
-
-        <div id="recommendedStrip" class="recommended-strip"></div>
-        <div id="lessonsGrid" class="cards-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreLessonsBtn" class="ghost-btn">Afficher plus de leçons</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="quiz" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">QCM</div>
-            <h2>Entraînement interactif</h2>
-          </div>
-          <p>
-            10 QCM débutant, 10 intermédiaire, 10 professionnel. Sans répétition.
-          </p>
-        </div>
-
-        <div class="filter-row" id="quizAudienceFilters">
-          <button class="filter-btn active" data-quiz-filter="recommended">Recommandés</button>
-          <button class="filter-btn" data-quiz-filter="debutant">Débutant</button>
-          <button class="filter-btn" data-quiz-filter="intermediaire">Intermédiaire</button>
-          <button class="filter-btn" data-quiz-filter="professionnel">Professionnel</button>
-          <button class="filter-btn" data-quiz-filter="all">Tout voir</button>
-        </div>
-
-        <div id="quizGrid" class="quiz-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreQuizzesBtn" class="ghost-btn">Afficher plus de QCM</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="quests" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Quêtes</div>
-            <h2>Des missions utiles et progressives</h2>
-          </div>
-          <p>
-            10 quêtes débutant, 10 intermédiaire, 10 professionnel.
-          </p>
-        </div>
-
-        <div id="questsGrid" class="quests-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreQuestsBtn" class="ghost-btn">Afficher plus de quêtes</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="rewards" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Récompenses</div>
-            <h2>30 niveaux • progression visible</h2>
-          </div>
-          <p>Une montée en niveau claire, motivante et cohérente.</p>
-        </div>
-
-        <div id="rewardsGrid" class="rewards-grid"></div>
-
-        <div class="section-actions">
-          <button id="showMoreRewardsBtn" class="ghost-btn">Afficher plus de niveaux</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">À propos</div>
-            <h2>Le projet d’Amine Rachoui</h2>
-          </div>
-          <p>
-            Une plateforme portée par un étudiant en école de commerce, passionné par la finance et les marchés.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-card glass">
-            <div class="about-avatar">AR</div>
-            <h3>Amine Rachoui</h3>
-            <p class="about-role">Programme Grande École • ESSCA</p>
-            <p class="about-text">
-              Mind & Markets est pensé comme un projet pédagogique, premium et structurant :
-              rendre les sujets financiers plus accessibles sans les vider de leur contenu.
-            </p>
-          </div>
-
-          <div class="about-card glass">
-            <h3>Profil</h3>
-            <ul class="about-list">
-              <li>Étudiant à l’ESSCA</li>
-              <li>Intérêt fort pour finance et marchés</li>
-              <li>Suivi des actifs financiers et crypto</li>
-              <li>Projet digital sérieux et différenciant</li>
-            </ul>
-          </div>
-
-          <div class="about-card glass">
-            <h3>Objectif du site</h3>
-            <ul class="about-list">
-              <li>Apprendre avec méthode</li>
-              <li>Créer une vraie logique de progression</li>
-              <li>Rendre les notions mémorables</li>
-              <li>Offrir une expérience agréable et premium</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section final-cta-section">
-      <div class="container">
-        <div class="final-cta glass">
-          <div>
-            <div class="section-kicker">Mind & Markets</div>
-            <h2>Une plateforme claire, premium et partageable sur LinkedIn</h2>
-            <p>
-              Le site est pensé pour être crédible, agréable et utile, sans être lourd ni confus.
-            </p>
-          </div>
-          <div class="cta-actions">
-            <a href="#lessons" class="btn btn-primary">Voir les leçons</a>
-            <a href="#quiz" class="btn btn-secondary">Faire un QCM</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <div>
-        <div class="footer-title">Mind & Markets</div>
-        <div class="footer-subtitle">Business, finance et marchés expliqués simplement.</div>
-      </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-logo">Finance<span>Lab</span></div>
+      <p>Créé avec ❤️ par Amina Rachoui · ESCA École de Management · PGE 1ère année</p>
+      <p class="footer-disc">Contenu éducatif uniquement — ne constitue pas un conseil en investissement.</p>
       <div class="footer-links">
-        <a href="#dashboard">Dashboard</a>
-        <a href="#lessons">Leçons</a>
-        <a href="#quiz">QCM</a>
-        <a href="#quests">Quêtes</a>
-        <a href="#about">À propos</a>
+        <span>© 2025 FinanceLab</span>
+        <span>·</span>
+        <span>Sources : AMF, Investopedia, Bitcoin.org, Ethereum.org</span>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js"></script>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     OVERLAY DE SUCCÈS (animation globale)
+============================================================ -->
+<div class="confetti-overlay hidden" id="confetti-overlay"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
